@@ -366,33 +366,71 @@
     .category-header {
       font-size: 1.1rem;
       font-weight: 800;
-      margin: 20px 0 10px;
+      margin: 22px 0 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 6px;
+      border-bottom: 2px solid var(--border);
+      padding: 6px 10px 8px;
+      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+      background: var(--surface-subtle);
+      border-left: 4px solid var(--accent-amber);
     }
 
     .category-header:first-of-type { margin-top: 4px; }
 
+    .category-header-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+    }
+
+    .cat-tag-pill {
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
     .category-count {
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       color: var(--text-light);
-      font-weight: 600;
+      font-weight: 700;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+    }
+
+    /* Top Bestseller Highlight Section */
+    .sec-bestsellers-highlight {
+      background: linear-gradient(180deg, rgba(254, 243, 199, 0.45) 0%, rgba(254, 243, 199, 0.1) 100%);
+      border: 1.5px dashed #F59E0B;
+      border-radius: var(--radius-lg);
+      padding: 12px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 16px rgba(245, 158, 11, 0.08);
+    }
+    [data-theme="dark"] .sec-bestsellers-highlight {
+      background: linear-gradient(180deg, rgba(69, 26, 3, 0.45) 0%, rgba(20, 10, 2, 0.1) 100%);
+      border: 1.5px dashed #D97706;
+      box-shadow: 0 4px 16px rgba(217, 119, 54, 0.15);
     }
 
     /* Menu Grid: Compact Minimalist Item Rows */
     .items-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 10px;
+      gap: 12px;
     }
 
     @media (min-width: 680px) {
       .items-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 12px;
+        gap: 14px;
       }
     }
 
@@ -407,55 +445,75 @@
       align-items: center;
       gap: 12px;
       box-shadow: var(--shadow-sm);
-      transition: border-color 0.15s;
+      transition: all 0.18s ease;
+      position: relative;
     }
 
     .dish-card:hover {
       border-color: var(--text-light);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
     }
 
-    .dish-info {
-      flex: 1;
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+    /* Bestseller Color Highlights Across All Sections */
+    .dish-card.is-bestseller {
+      background: linear-gradient(135deg, #FFFDF5 0%, #FEF9C3 100%);
+      border: 1.5px solid #F59E0B;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.18);
     }
 
-    .dish-top-row {
-      display: flex;
+    [data-theme="dark"] .dish-card.is-bestseller {
+      background: linear-gradient(135deg, #271E0B 0%, #1A1407 100%);
+      border: 1.5px solid #D97706;
+      box-shadow: 0 4px 14px rgba(217, 119, 54, 0.22);
+    }
+
+    .dish-card.is-bestseller:hover {
+      border-color: #EA580C;
+      box-shadow: 0 6px 18px rgba(234, 88, 12, 0.25);
+    }
+
+    .bestseller-corner-tag {
+      position: absolute;
+      top: -1px;
+      right: 12px;
+      background: linear-gradient(135deg, #DC2626 0%, #EA580C 50%, #F59E0B 100%);
+      color: #FFFFFF;
+      font-size: 0.58rem;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 0 0 7px 7px;
+      box-shadow: 0 2px 6px rgba(220, 38, 38, 0.35);
+      display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 2px;
+      z-index: 2;
     }
 
-    /* FSSAI Pure Veg Green Square-Dot */
-    .veg-box {
-      width: 13px;
-      height: 13px;
-      border: 1.5px solid var(--veg-green);
-      border-radius: 3px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      padding: 1px;
+    .is-bestseller .dish-title {
+      color: #92400E;
+      font-weight: 800;
     }
 
-    .veg-dot {
-      width: 5px;
-      height: 5px;
-      background: var(--veg-green);
-      border-radius: 50%;
+    [data-theme="dark"] .is-bestseller .dish-title {
+      color: #FDE68A;
     }
 
     .badge-bestseller {
-      background: var(--accent-surface);
-      color: var(--accent-amber);
-      font-size: 0.65rem;
-      font-weight: 800;
-      padding: 1px 5px;
-      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, #F59E0B 0%, #EA580C 100%);
+      color: #FFFFFF;
+      font-size: 0.63rem;
+      font-weight: 900;
+      padding: 1.5px 7px;
+      border-radius: var(--radius-full);
       text-transform: uppercase;
+      letter-spacing: 0.03em;
+      box-shadow: 0 1px 4px rgba(245, 158, 11, 0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
     }
 
     .badge-jain {
@@ -1397,7 +1455,7 @@
 
       <!-- Separate Pyaaz / Bina Pyaaz / Bestsellers Filter Bar -->
       <div class="diet-filter-row" id="dietFilterRow">
-        <button type="button" class="diet-btn active" data-diet="all">✨ Sabhi</button>
+        <button type="button" class="diet-btn active" data-diet="all">✨ Sabhi Options (All)</button>
         <button type="button" class="diet-btn" data-diet="bestseller">⭐ Bestsellers</button>
         <button type="button" class="diet-btn" data-diet="noonion">🚫🧅 Bina Pyaaz (No Onion)</button>
         <button type="button" class="diet-btn" data-diet="onion">🧅 Pyaaz Wale (With Onion)</button>
@@ -1646,7 +1704,7 @@
       hinglish: {
         searchPlaceholder: "Pizza, burger, shake dhoondo...",
         jainLabel: "Jain Food",
-        allCategory: "✨ Sabhi Dishes",
+        allCategory: "✨ Sabhi Options (All)",
         itemsSelected: "items order mein",
         btnCheckout: "Order Karein",
         modalTitle: "Aapka Order",
@@ -1680,7 +1738,7 @@
       english: {
         searchPlaceholder: "Search pizza, burger, shake...",
         jainLabel: "Jain Options",
-        allCategory: "✨ All Dishes",
+        allCategory: "✨ All Options",
         itemsSelected: "items selected",
         btnCheckout: "View Order",
         modalTitle: "Your Order",
@@ -1970,6 +2028,17 @@
         btn.textContent = label;
         btn.addEventListener('click', () => {
           activeCategory = cat;
+          if (cat === 'Bestsellers') {
+            dietFilter = 'bestseller';
+            document.querySelectorAll('#dietFilterRow .diet-btn').forEach(b => {
+              b.classList.toggle('active', b.dataset.diet === 'bestseller');
+            });
+          } else if (cat === 'All') {
+            dietFilter = 'all';
+            document.querySelectorAll('#dietFilterRow .diet-btn').forEach(b => {
+              b.classList.toggle('active', b.dataset.diet === 'all');
+            });
+          }
           renderCategoryPills();
           renderMenu();
         });
@@ -2005,9 +2074,20 @@
 
     function groupByCategory(items) {
       if (activeCategory === 'Bestsellers' || dietFilter === 'bestseller') {
-        return { '⭐ Bestsellers': items };
+        const bests = items.filter(i => i.bestseller);
+        return { '⭐ Top Bestsellers': bests.length ? bests : items };
       }
       const groups = {};
+
+      // If viewing all dishes (default view), feature the Top Bestsellers right at the top!
+      if (activeCategory === 'All' && !searchQuery.trim() && dietFilter === 'all') {
+        const bestsellers = items.filter(i => i.bestseller);
+        if (bestsellers.length > 0) {
+          groups['⭐ Top Bestsellers'] = bestsellers;
+        }
+      }
+
+      // Group all items into their respective sections so ALL options are shown!
       items.forEach(i => {
         const c = i.category || 'Specialties';
         if (!groups[c]) groups[c] = [];
@@ -2016,14 +2096,25 @@
       return groups;
     }
 
+    const SECTION_THEMES = {
+      '⭐ Top Bestsellers': { icon: '⭐', color: '#F59E0B', border: '#F59E0B', bg: '#FEF3C7', text: '#92400E', tag: 'Deoband Favs' },
+      'Pizzas': { icon: '🍕', color: '#EF4444', border: '#EF4444', bg: '#FEE2E2', text: '#991B1B', tag: 'Hand-Tossed' },
+      'Burgers': { icon: '🍔', color: '#F97316', border: '#F97316', bg: '#FFEDD5', text: '#9A3412', tag: 'Full Size Only' },
+      'Chowmein & Noodles': { icon: '🍜', color: '#D97706', border: '#D97706', bg: '#FEF3C7', text: '#92400E', tag: 'Desi Wok' },
+      'Value Combos': { icon: '🎁', color: '#8B5CF6', border: '#8B5CF6', bg: '#EDE9FE', text: '#5B21B6', tag: 'Bumper Savings' },
+      'Bakery & Sides': { icon: '🥖', color: '#10B981', border: '#10B981', bg: '#D1FAE5', text: '#065F46', tag: 'Fresh Baked' },
+      'Beverages & Shakes': { icon: '🥤', color: '#06B6D4', border: '#06B6D4', bg: '#CFFAFE', text: '#155E75', tag: 'Thanda & Chilled' },
+      'Desserts': { icon: '🍰', color: '#EC4899', border: '#EC4899', bg: '#FCE7F3', text: '#9D174D', tag: 'Meetha Treats' }
+    };
+
     function renderMenu() {
       const filtered = getFilteredItems();
       if (!filtered.length) {
         menuContainer.innerHTML = `
           <div style="text-align: center; padding: 40px 16px; color: var(--text-muted);">
             <div style="font-size: 2.2rem; margin-bottom: 8px;">🔍</div>
-            <strong style="font-size: 1rem; color: var(--text);">No dishes match</strong>
-            <p style="font-size: 0.8rem; margin-top: 4px;">Clear your search or toggle Jain filter.</p>
+            <strong style="font-size: 1rem; color: var(--text);">Koi dish nahi mili</strong>
+            <p style="font-size: 0.8rem; margin-top: 4px;">Search clear karein ya filter badal kar check karein.</p>
           </div>
         `;
         return;
@@ -2034,11 +2125,24 @@
 
       for (const [category, items] of Object.entries(grouped)) {
         const section = document.createElement('section');
+        const theme = SECTION_THEMES[category] || { icon: '🍽️', color: 'var(--accent-amber)', border: 'var(--accent-amber)', bg: 'var(--accent-surface)', text: 'var(--text)', tag: 'Special' };
+
+        const isBestsellerSection = category.includes('Bestseller');
+        section.className = isBestsellerSection ? 'menu-category-section sec-bestsellers-highlight' : 'menu-category-section';
+
+        const cleanName = category.replace(/^⭐\s*/, '');
+        const secId = 'cat-' + cleanName.toLowerCase().replace(/[^a-z0-9]/g, '');
+        section.id = secId;
 
         const title = document.createElement('div');
         title.className = 'category-header font-serif';
+        title.style.borderLeftColor = theme.border;
         title.innerHTML = `
-          <span>${category}</span>
+          <div class="category-header-title">
+            <span style="font-size: 1.25rem;">${theme.icon}</span>
+            <span>${category}</span>
+            <span class="cat-tag-pill" style="background: ${theme.bg}; color: ${theme.text};">${theme.tag}</span>
+          </div>
           <span class="category-count">${items.length} items</span>
         `;
         section.appendChild(title);
@@ -2072,7 +2176,7 @@
 
     function createDishCard(item) {
       const card = document.createElement('article');
-      card.className = 'dish-card';
+      card.className = item.bestseller ? 'dish-card is-bestseller' : 'dish-card';
 
       // Default portion is Medium for Pizzas, Full for others
       if (!selectedPortions.has(item.id)) {
@@ -2080,8 +2184,13 @@
       }
       const activePortion = selectedPortions.get(item.id);
 
+      let cornerTagHtml = '';
+      if (item.bestseller) {
+        cornerTagHtml = `<span class="bestseller-corner-tag">⭐ BESTSELLER</span>`;
+      }
+
       let badgesHtml = '';
-      if (item.bestseller) badgesHtml += `<span class="badge-bestseller">★ Best</span>`;
+      if (item.bestseller) badgesHtml += `<span class="badge-bestseller">★ Best Choice</span>`;
       if (item.hasOnion) {
         badgesHtml += `<span class="badge-onion" title="Contains Onion">🧅 Pyaaz</span>`;
       } else {
@@ -2137,6 +2246,7 @@
       }
 
       card.innerHTML = `
+        ${cornerTagHtml}
         <div class="dish-info">
           <div class="dish-top-row">
             <span class="veg-box" title="Pure Veg"><span class="veg-dot"></span></span>
@@ -2542,6 +2652,12 @@
         document.querySelectorAll('#dietFilterRow .diet-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         dietFilter = btn.dataset.diet;
+        if (dietFilter === 'bestseller') {
+          activeCategory = 'Bestsellers';
+        } else if (dietFilter === 'all') {
+          activeCategory = 'All';
+        }
+        renderCategoryPills();
         renderMenu();
       });
     });
