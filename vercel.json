@@ -1,6 +1,7 @@
 {
   "version": 2,
   "name": "truecafe-whatsapp-menu",
+  "framework": null,
   "cleanUrls": true,
   "headers": [
     {
