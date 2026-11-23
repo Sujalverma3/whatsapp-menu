@@ -1666,10 +1666,9 @@
 
       <!-- Separate Pyaaz / Bina Pyaaz / Deoband Favorites Filter Bar -->
       <div class="diet-filter-row" id="dietFilterRow">
-        <button type="button" class="diet-btn active" data-diet="all">✨ Sabhi Options (All)</button>
+        <button type="button" class="diet-btn active" data-diet="all">✨ Sabhi Options</button>
         <button type="button" class="diet-btn" data-diet="bestseller">⭐ Deoband Favorites</button>
-        <button type="button" class="diet-btn" data-diet="noonion">🚫🧅 Bina Pyaaz (No Onion)</button>
-        <button type="button" class="diet-btn" data-diet="onion">🧅 Pyaaz Wale (With Onion)</button>
+        <button type="button" class="diet-btn" data-diet="paisebachao">💰 Paise Bachao Deals</button>
       </div>
 
       <!-- Quick Category Scroller -->
@@ -1760,6 +1759,18 @@
           </div>
         </div>
 
+        <!-- Pyaaz / Onion Preference (Kitchen Instruction in Order Karein only) -->
+        <div class="form-box" id="pyaazPreferenceWrap">
+          <span class="form-title">🧅 Pyaaz / Onion Preference (Prep Instruction)</span>
+          <div class="toggle-row" id="pyaazPrefToggle">
+            <button type="button" class="toggle-btn active" id="btnPyaazNormal">🧅 Regular (With Onion)</button>
+            <button type="button" class="toggle-btn" id="btnPyaazBina">🚫🧅 Bina Pyaaz (Jain Prep)</button>
+          </div>
+          <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 4px;">
+            *Bina Pyaaz choose karne par kitchen me bina pyaaz/lehsun ka alag se cook kiya jayega.
+          </div>
+        </div>
+
         <!-- Notes -->
         <div class="form-box">
           <span class="form-title" id="titleNotes">Kitchen Note (Optional)</span>
@@ -1773,6 +1784,16 @@
 
         <!-- Smart Meal Suggestion at Placing Time -->
         <div class="suggest-meal-box" id="suggestMealBox">
+          <div class="quick-cold-bar" id="quickColdDrinkBar">
+            <div class="quick-cold-left">
+              <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=120&q=80" alt="Chilled Drink" class="cold-thumb">
+              <div class="quick-cold-meta">
+                <div class="cold-title">🥤 Chilled Cold Drink (300ml)</div>
+                <div class="cold-sub">Thums Up / Coke / Sprite • Only ₹40</div>
+              </div>
+            </div>
+            <button type="button" class="btn-quick-cold" id="btnQuickColdAdd">+ Add ₹40</button>
+          </div>
           <div class="suggest-head">
             <span class="suggest-badge">✨ COMPLETE YOUR MEAL • POPULAR PAIRINGS</span>
             <span class="suggest-title">Khaane ke sath kuch thanda ya meetha add karein:</span>
@@ -2036,36 +2057,482 @@
     }
 
     const DEFAULT_MENU = [
-      { id: "p1", name: "Margherita Pizza", category: "Pizzas", description: "Mozzarella, tomato passata, fresh basil", price: 179, sizes: { small: 109, medium: 179, large: 279 }, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: true, image: "images/pizza.png", available: true },
-      { id: "p2", name: "Tandoori Paneer Pizza", category: "Pizzas", description: "Tandoori paneer, capsicum, red onion", price: 229, sizes: { small: 139, medium: 229, large: 349 }, hasOnion: true, isVeg: true, jainFriendly: false, bestseller: true, image: "images/pizza.png", available: true },
-      { id: "p3", name: "New Garden Fresh Pizza", category: "Pizzas", description: "Sweet corn, capsicum, onion, double cheese", price: 179, sizes: { small: 109, medium: 179, large: 279 }, hasOnion: true, isVeg: true, jainFriendly: false, bestseller: false, image: "images/pizza.png", available: true },
-      { id: "p4", name: "Cheese Onion & Paneer Pizza", category: "Pizzas", description: "Spiced paneer, red onion, mozzarella", price: 179, sizes: { small: 109, medium: 179, large: 279 }, hasOnion: true, isVeg: true, jainFriendly: false, bestseller: false, image: "images/pizza.png", available: true },
-      { id: "p5", name: "Mexican Garden Wave Pizza", category: "Pizzas", description: "Jalapeño, sweet corn, paneer, capsicum", price: 199, sizes: { small: 119, medium: 199, large: 319 }, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: true, image: "images/pizza.png", available: true },
-      { id: "b1", name: "Mix Veg Tikki Burger", category: "Burgers", description: "Crispy veg patty, shredded lettuce, house mayo", price: 80, hasHalf: false, halfPrice: null, hasOnion: true, isVeg: true, jainFriendly: false, bestseller: false, image: "images/burger.png", available: true },
-      { id: "b2", name: "Cheese Burger", category: "Burgers", description: "Herb potato patty, cheddar slice, gherkins", price: 100, hasHalf: false, halfPrice: null, hasOnion: true, isVeg: true, jainFriendly: false, bestseller: false, image: "images/burger.png", available: true },
-      { id: "b3", name: "Tandoori Cheese Burger", category: "Burgers", description: "Paneer patty, cheddar cheese, tandoori relish", price: 130, hasHalf: false, halfPrice: null, hasOnion: true, isVeg: true, jainFriendly: false, bestseller: true, image: "images/burger.png", available: true },
-      { id: "b4", name: "Maharaja Burger", category: "Burgers", description: "Double patty, double cheddar, jalapeños", price: 190, hasHalf: false, halfPrice: null, hasOnion: true, memeTag: "Aadha burger kya hota hai Binod? Poora khao!", memeImage: "images/meme_burger.svg", isVeg: true, jainFriendly: false, bestseller: true, image: "images/burger.png", available: true },
-      { id: "c1", name: "Veg Chowmein (Veg Noodles)", category: "Chowmein & Noodles", description: "Cabbage, carrot, capsicum, soy, wok tossed noodles", price: 80, hasHalf: false, halfPrice: null, hasOnion: true, isVeg: true, jainFriendly: false, bestseller: true, image: "images/chinese.png", available: true },
-      { id: "c2", name: "Hakka Veg Noodles", category: "Chowmein & Noodles", description: "Julienne vegetables, spring onion, Hakka garlic wok sauce", price: 100, hasHalf: false, halfPrice: null, hasOnion: true, isVeg: true, jainFriendly: false, bestseller: true, image: "images/chinese.png", available: true },
-      { id: "c3", name: "Hakka Paneer Noodles", category: "Chowmein & Noodles", description: "Spiced paneer cubes, capsicum, Hakka wok noodles", price: 120, hasHalf: false, halfPrice: null, hasOnion: true, isVeg: true, jainFriendly: false, bestseller: false, image: "images/chinese.png", available: true },
-      { id: "c4", name: "Chilli Garlic Noodles", category: "Chowmein & Noodles", description: "Roasted garlic, red chilli wok paste, shredded veggies", price: 140, hasHalf: false, halfPrice: null, hasOnion: true, isVeg: true, jainFriendly: false, bestseller: false, image: "images/chinese.png", available: true },
-      { id: "c5", name: "Jain Veg Chowmein (Bina Pyaaz)", category: "Chowmein & Noodles", description: "Shredded cabbage, green peas, capsicum, mild soy (No Onion/Garlic)", price: 90, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: false, image: "images/chinese.png", available: true },
-      { id: "cb1", name: "Burger + Masala Fries + Drink Combo", category: "Value Combos", description: "Mix veg burger, peri-peri masala fries, chilled soft drink", price: 169, originalPrice: 249, savings: 80, hasHalf: false, halfPrice: null, hasOnion: true, isVeg: true, jainFriendly: false, bestseller: true, image: "images/value_combo.svg", available: true },
-      { id: "cb2", name: "Chowmein + Fried Momos Combo", category: "Value Combos", description: "Veg Hakka chowmein, 5 crispy fried momos, spicy dip", price: 159, originalPrice: 239, savings: 80, hasHalf: false, halfPrice: null, hasOnion: true, isVeg: true, jainFriendly: false, bestseller: true, image: "images/value_combo.svg", available: true },
-      { id: "cb3", name: "Pizza + Stuffed Garlic Bread + Drink Combo", category: "Value Combos", description: "Regular Margherita pizza, cheese stuffed bread, chilled drink (Bina Pyaaz / Jain)", price: 289, originalPrice: 389, savings: 100, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: true, image: "images/value_combo.svg", available: true },
-      { id: "cb4", name: "Paneer Kathi Roll + Cold Coffee Combo", category: "Value Combos", description: "Grilled tandoori paneer kathi roll, thick iced cold coffee", price: 199, originalPrice: 269, savings: 70, hasHalf: false, halfPrice: null, hasOnion: true, isVeg: true, jainFriendly: false, bestseller: true, image: "images/value_combo.svg", available: true },
-      { id: "s1", name: "Cheese Garlic Bread", category: "Bakery & Sides", description: "Roasted garlic butter, mozzarella, toasted bread", price: 140, hasHalf: true, halfPrice: 85, hasOnion: false, isVeg: true, jainFriendly: false, bestseller: true, image: "images/garlic_bread.svg", available: true },
-      { id: "d1", name: "Choco Lava Cake", category: "Desserts", description: "Dark chocolate, cocoa sponge, molten core", price: 90, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: true, image: "images/desserts.png", available: true },
-      { id: "bv1", name: "Cold Coffee", category: "Beverages & Shakes", description: "Espresso shot, chilled dairy, dark chocolate", price: 119, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: true, image: "images/shake_coffee.svg", available: true },
-      { id: "bv2", name: "Kitkat Shake", category: "Beverages & Shakes", description: "Kitkat wafer, vanilla cream, milk", price: 119, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: true, image: "images/shake_coffee.svg", available: true },
-      { id: "bv3", name: "Chocolate Shake", category: "Beverages & Shakes", description: "Dark cocoa, chocolate fudge, milk", price: 99, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: false, image: "images/shake_coffee.svg", available: true },
-      { id: "bv4", name: "Vanilla Shake", category: "Beverages & Shakes", description: "Vanilla bean, thick cream, milk", price: 99, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: false, image: "images/shake_coffee.svg", available: true },
-      { id: "bv5", name: "Butterscotch Shake", category: "Beverages & Shakes", description: "Butterscotch crunch, praline nuggets, milk", price: 99, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: false, image: "images/shake_coffee.svg", available: true },
-      { id: "bv6", name: "Strawberry Shake", category: "Beverages & Shakes", description: "Strawberry purée, ice cream, milk", price: 99, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: false, image: "images/shake_coffee.svg", available: true },
-      { id: "bv7", name: "Green Mint Mojito", category: "Beverages & Shakes", description: "Fresh mint, tart lemon, raw cane sugar, soda", price: 99, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: false, image: "images/mojito_soda.svg", available: true },
-      { id: "bv8", name: "Blue Curacao Mojito", category: "Beverages & Shakes", description: "Blue curaçao, mint sprigs, lime, soda", price: 99, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: false, image: "images/mojito_soda.svg", available: true },
-      { id: "bv9", name: "Fresh Lime Soda", category: "Beverages & Shakes", description: "Lemon juice, rock salt, mint, soda", price: 99, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: false, image: "images/mojito_soda.svg", available: true }
-    ];
+  {
+    "id": "p1",
+    "name": "Margherita Pizza",
+    "category": "Pizzas",
+    "description": "Mozzarella, tomato passata, fresh basil",
+    "price": 179,
+    "sizes": {
+      "small": 109,
+      "medium": 179,
+      "large": 279
+    },
+    "hasOnion": false,
+    "isVeg": true,
+    "jainFriendly": true,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1604382355076-af4b0eb60143?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  },
+  {
+    "id": "p2",
+    "name": "Tandoori Paneer Pizza",
+    "category": "Pizzas",
+    "description": "Tandoori paneer, capsicum, red onion",
+    "price": 229,
+    "sizes": {
+      "small": 139,
+      "medium": 229,
+      "large": 349
+    },
+    "hasOnion": true,
+    "isVeg": true,
+    "jainFriendly": false,
+    "bestseller": true,
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  },
+  {
+    "id": "p3",
+    "name": "New Garden Fresh Pizza",
+    "category": "Pizzas",
+    "description": "Sweet corn, capsicum, onion, double cheese",
+    "price": 179,
+    "sizes": {
+      "small": 109,
+      "medium": 179,
+      "large": 279
+    },
+    "hasOnion": true,
+    "isVeg": true,
+    "jainFriendly": false,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  },
+  {
+    "id": "p4",
+    "name": "Cheese Onion & Paneer Pizza",
+    "category": "Pizzas",
+    "description": "Spiced paneer, red onion, mozzarella",
+    "price": 179,
+    "sizes": {
+      "small": 109,
+      "medium": 179,
+      "large": 279
+    },
+    "hasOnion": true,
+    "isVeg": true,
+    "jainFriendly": false,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  },
+  {
+    "id": "p5",
+    "name": "Mexican Garden Wave Pizza",
+    "category": "Pizzas",
+    "description": "Jalapeño, sweet corn, paneer, capsicum",
+    "price": 199,
+    "sizes": {
+      "small": 119,
+      "medium": 199,
+      "large": 319
+    },
+    "hasOnion": false,
+    "isVeg": true,
+    "jainFriendly": true,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  },
+  {
+    "id": "b1",
+    "name": "Mix Veg Tikki Burger",
+    "category": "Burgers",
+    "description": "Crispy veg patty, shredded lettuce, house mayo",
+    "price": 80,
+    "hasHalf": false,
+    "halfPrice": null,
+    "hasOnion": true,
+    "isVeg": true,
+    "jainFriendly": false,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  },
+  {
+    "id": "b2",
+    "name": "Cheese Burger",
+    "category": "Burgers",
+    "description": "Herb potato patty, cheddar slice, gherkins",
+    "price": 100,
+    "hasHalf": false,
+    "halfPrice": null,
+    "hasOnion": true,
+    "isVeg": true,
+    "jainFriendly": false,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  },
+  {
+    "id": "b3",
+    "name": "Tandoori Cheese Burger",
+    "category": "Burgers",
+    "description": "Paneer patty, cheddar cheese, tandoori relish",
+    "price": 130,
+    "hasHalf": false,
+    "halfPrice": null,
+    "hasOnion": true,
+    "isVeg": true,
+    "jainFriendly": false,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  },
+  {
+    "id": "b4",
+    "name": "Maharaja Burger",
+    "category": "Burgers",
+    "description": "Double patty, double cheddar, jalapeños",
+    "price": 190,
+    "hasHalf": false,
+    "halfPrice": null,
+    "hasOnion": true,
+    "memeTag": "Aadha burger kya hota hai Binod? Poora khao!",
+    "memeImage": "images/meme_burger.svg",
+    "isVeg": true,
+    "jainFriendly": false,
+    "bestseller": true,
+    "image": "https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  },
+  {
+    "id": "c1",
+    "name": "Veg Chowmein (Veg Noodles)",
+    "category": "Chowmein & Noodles",
+    "description": "Cabbage, carrot, capsicum, soy, wok tossed noodles",
+    "price": 80,
+    "hasHalf": false,
+    "halfPrice": null,
+    "hasOnion": true,
+    "isVeg": true,
+    "jainFriendly": false,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  },
+  {
+    "id": "c2",
+    "name": "Hakka Veg Noodles",
+    "category": "Chowmein & Noodles",
+    "description": "Julienne vegetables, spring onion, Hakka garlic wok sauce",
+    "price": 100,
+    "hasHalf": false,
+    "halfPrice": null,
+    "hasOnion": true,
+    "isVeg": true,
+    "jainFriendly": false,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1612927601601-6638404737ce?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  },
+  {
+    "id": "c3",
+    "name": "Hakka Paneer Noodles",
+    "category": "Chowmein & Noodles",
+    "description": "Spiced paneer cubes, capsicum, Hakka wok noodles",
+    "price": 120,
+    "hasHalf": false,
+    "halfPrice": null,
+    "hasOnion": true,
+    "isVeg": true,
+    "jainFriendly": false,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  },
+  {
+    "id": "c4",
+    "name": "Chilli Garlic Noodles",
+    "category": "Chowmein & Noodles",
+    "description": "Roasted garlic, red chilli wok paste, shredded veggies",
+    "price": 140,
+    "hasHalf": false,
+    "halfPrice": null,
+    "hasOnion": true,
+    "isVeg": true,
+    "jainFriendly": false,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  },
+  {
+    "id": "c5",
+    "name": "Jain Veg Chowmein (Bina Pyaaz)",
+    "category": "Chowmein & Noodles",
+    "description": "Shredded cabbage, green peas, capsicum, mild soy (No Onion/Garlic)",
+    "price": 90,
+    "hasHalf": false,
+    "halfPrice": null,
+    "hasOnion": false,
+    "isVeg": true,
+    "jainFriendly": true,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  },
+  {
+    "id": "cb1",
+    "name": "Burger + Masala Fries + Drink Combo",
+    "category": "Paise Bachao",
+    "description": "Mix veg burger, peri-peri masala fries, chilled soft drink",
+    "price": 169,
+    "hasHalf": false,
+    "halfPrice": null,
+    "hasOnion": true,
+    "isVeg": true,
+    "jainFriendly": false,
+    "bestseller": true,
+    "image": "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=600&q=80",
+    "available": true,
+    "originalPrice": 249,
+    "savings": 80
+  },
+  {
+    "id": "cb2",
+    "name": "Chowmein + Fried Momos Combo",
+    "category": "Paise Bachao",
+    "description": "Veg Hakka chowmein, 5 crispy fried momos, spicy dip",
+    "price": 159,
+    "hasHalf": false,
+    "halfPrice": null,
+    "hasOnion": true,
+    "isVeg": true,
+    "jainFriendly": false,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1625220194771-7ebdea0b70b9?auto=format&fit=crop&w=600&q=80",
+    "available": true,
+    "originalPrice": 239,
+    "savings": 80
+  },
+  {
+    "id": "cb3",
+    "name": "Pizza + Stuffed Garlic Bread + Drink Combo",
+    "category": "Paise Bachao",
+    "description": "Regular Margherita pizza, cheese stuffed bread, chilled drink (Bina Pyaaz / Jain)",
+    "price": 289,
+    "hasHalf": false,
+    "halfPrice": null,
+    "hasOnion": false,
+    "isVeg": true,
+    "jainFriendly": true,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1544982503-9f984c14501a?auto=format&fit=crop&w=600&q=80",
+    "available": true,
+    "originalPrice": 389,
+    "savings": 100
+  },
+  {
+    "id": "cb4",
+    "name": "Paneer Kathi Roll + Cold Coffee Combo",
+    "category": "Paise Bachao",
+    "description": "Grilled tandoori paneer kathi roll, thick iced cold coffee",
+    "price": 199,
+    "hasHalf": false,
+    "halfPrice": null,
+    "hasOnion": true,
+    "isVeg": true,
+    "jainFriendly": false,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80",
+    "available": true,
+    "originalPrice": 269,
+    "savings": 70
+  },
+  {
+    "id": "s1",
+    "name": "Cheese Garlic Bread",
+    "category": "Bakery & Sides",
+    "description": "Roasted garlic butter, mozzarella, toasted bread",
+    "price": 140,
+    "hasHalf": true,
+    "halfPrice": 85,
+    "hasOnion": false,
+    "isVeg": true,
+    "jainFriendly": false,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1573140247632-f8fd74997d5c?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  },
+  {
+    "id": "d1",
+    "name": "Choco Lava Cake",
+    "category": "Desserts",
+    "description": "Dark chocolate, cocoa sponge, molten lava core",
+    "price": 90,
+    "hasHalf": false,
+    "halfPrice": null,
+    "hasOnion": false,
+    "isVeg": true,
+    "jainFriendly": true,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  },
+  {
+    "id": "bv1",
+    "name": "Cold Coffee",
+    "category": "Beverages & Shakes",
+    "description": "Espresso shot, chilled dairy, dark chocolate",
+    "price": 119,
+    "hasHalf": false,
+    "halfPrice": null,
+    "hasOnion": false,
+    "isVeg": true,
+    "jainFriendly": true,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  },
+  {
+    "id": "bv2",
+    "name": "Kitkat Shake",
+    "category": "Beverages & Shakes",
+    "description": "Kitkat wafer, vanilla cream, chilled milk",
+    "price": 119,
+    "hasHalf": false,
+    "halfPrice": null,
+    "hasOnion": false,
+    "isVeg": true,
+    "jainFriendly": true,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  },
+  {
+    "id": "bv3",
+    "name": "Chocolate Shake",
+    "category": "Beverages & Shakes",
+    "description": "Dark cocoa, chocolate fudge, chilled milk",
+    "price": 99,
+    "hasHalf": false,
+    "halfPrice": null,
+    "hasOnion": false,
+    "isVeg": true,
+    "jainFriendly": true,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  },
+  {
+    "id": "bv4",
+    "name": "Vanilla Shake",
+    "category": "Beverages & Shakes",
+    "description": "Vanilla bean, thick cream, chilled milk",
+    "price": 99,
+    "hasHalf": false,
+    "halfPrice": null,
+    "hasOnion": false,
+    "isVeg": true,
+    "jainFriendly": true,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1570197788417-0e82375c9371?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  },
+  {
+    "id": "bv5",
+    "name": "Butterscotch Shake",
+    "category": "Beverages & Shakes",
+    "description": "Butterscotch crunch, praline nuggets, milk",
+    "price": 99,
+    "hasHalf": false,
+    "halfPrice": null,
+    "hasOnion": false,
+    "isVeg": true,
+    "jainFriendly": true,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1541658016709-82535e94bc69?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  },
+  {
+    "id": "bv6",
+    "name": "Strawberry Shake",
+    "category": "Beverages & Shakes",
+    "description": "Strawberry purée, ice cream, chilled milk",
+    "price": 99,
+    "hasHalf": false,
+    "halfPrice": null,
+    "hasOnion": false,
+    "isVeg": true,
+    "jainFriendly": true,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1553787499-6f9133860278?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  },
+  {
+    "id": "bv7",
+    "name": "Green Mint Mojito",
+    "category": "Beverages & Shakes",
+    "description": "Fresh mint, tart lemon, raw cane sugar, soda",
+    "price": 99,
+    "hasHalf": false,
+    "halfPrice": null,
+    "hasOnion": false,
+    "isVeg": true,
+    "jainFriendly": true,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  },
+  {
+    "id": "bv8",
+    "name": "Blue Curacao Mojito",
+    "category": "Beverages & Shakes",
+    "description": "Blue curaçao, mint sprigs, lime, soda",
+    "price": 99,
+    "hasHalf": false,
+    "halfPrice": null,
+    "hasOnion": false,
+    "isVeg": true,
+    "jainFriendly": true,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  },
+  {
+    "id": "bv9",
+    "name": "Fresh Lime Soda",
+    "category": "Beverages & Shakes",
+    "description": "Lemon juice, rock salt, mint, club soda",
+    "price": 99,
+    "hasHalf": false,
+    "halfPrice": null,
+    "hasOnion": false,
+    "isVeg": true,
+    "jainFriendly": true,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  },
+  {
+    "id": "bv10",
+    "name": "Chilled Cold Drink (Can / Bottle)",
+    "category": "Beverages & Shakes",
+    "description": "Chilled 300ml bottle/can (Thums Up, Coca Cola, Sprite)",
+    "price": 40,
+    "hasHalf": false,
+    "halfPrice": null,
+    "hasOnion": false,
+    "isVeg": true,
+    "jainFriendly": true,
+    "bestseller": false,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80",
+    "available": true
+  }
+];
 
     // State
     let currentLang = localStorage.getItem(LANG_KEY) || 'hinglish';
@@ -2076,7 +2543,7 @@
     const selectedPortions = new Map();
 
     let activeCategory = 'All';
-    let dietFilter = 'all'; // 'all' | 'bestseller' | 'noonion' | 'onion'
+    let dietFilter = 'all'; // 'all' | 'bestseller' | 'paisebachao'
     let searchQuery = '';
     let deliveryMode = 'delivery';
     let paymentMode = 'upi';
@@ -2272,10 +2739,9 @@
       return menuItems.filter(item => {
         if (item.available === false) return false;
         
-        // Pyaaz / Bina Pyaaz / Bestseller Filter
+        // Bestseller & Paise Bachao Filter
         if (dietFilter === 'bestseller' && !item.bestseller) return false;
-        if (dietFilter === 'noonion' && item.hasOnion) return false;
-        if (dietFilter === 'onion' && !item.hasOnion) return false;
+        if (dietFilter === 'paisebachao' && item.category !== 'Paise Bachao') return false;
 
         // Category filter
         if (activeCategory === 'Bestsellers') {
@@ -2323,7 +2789,7 @@
       'Pizzas': { icon: '🍕', color: '#EF4444', border: '#EF4444', bg: '#FEE2E2', text: '#991B1B', tag: 'Hand-Tossed' },
       'Burgers': { icon: '🍔', color: '#F97316', border: '#F97316', bg: '#FFEDD5', text: '#9A3412', tag: 'Full Size Only' },
       'Chowmein & Noodles': { icon: '🍜', color: '#D97706', border: '#D97706', bg: '#FEF3C7', text: '#92400E', tag: 'Desi Wok' },
-      'Value Combos': { icon: '🎁', color: '#8B5CF6', border: '#8B5CF6', bg: '#EDE9FE', text: '#5B21B6', tag: 'Bumper Savings' },
+      'Paise Bachao': { icon: '💰', color: '#10B981', border: '#10B981', bg: '#D1FAE5', text: '#065F46', tag: 'Paise Bachao Deal' },
       'Bakery & Sides': { icon: '🥖', color: '#10B981', border: '#10B981', bg: '#D1FAE5', text: '#065F46', tag: 'Fresh Baked' },
       'Beverages & Shakes': { icon: '🥤', color: '#06B6D4', border: '#06B6D4', bg: '#CFFAFE', text: '#155E75', tag: 'Thanda & Chilled' },
       'Desserts': { icon: '🍰', color: '#EC4899', border: '#EC4899', bg: '#FCE7F3', text: '#9D174D', tag: 'Meetha Treats' }
@@ -2351,12 +2817,12 @@
         valueBanner.className = 'value-savings-banner';
         valueBanner.innerHTML = `
           <div class="value-savings-content">
-            <span class="value-savings-badge">💰 VALUE MEAL SAVINGS • UP TO ₹100 OFF!</span>
+            <span class="value-savings-badge">💰 PAISE BACHAO DEALS • UP TO ₹100+ BACHAT!</span>
             <h3 class="value-savings-title">Combo Meals Pe Bumper Bachat Payein! 🏷️</h3>
             <p class="value-savings-desc">Pizza + Stuffed Garlic Bread + Cold Drink Combo sirf ₹289 mein (Alag se ₹389 — <strong>₹100 Bachat!</strong>)</p>
           </div>
           <button type="button" class="value-savings-btn" id="btnExploreCombos">
-            🎁 Value Combos Dekhein
+            💰 Paise Bachao Deals Dekhein
           </button>
         `;
         menuContainer.appendChild(valueBanner);
@@ -2364,7 +2830,7 @@
           const btnCombos = document.getElementById('btnExploreCombos');
           if (btnCombos) {
             btnCombos.addEventListener('click', () => {
-              activeCategory = 'Value Combos';
+              activeCategory = 'Paise Bachao';
               renderCategoryPills();
               renderMenu();
               const sec = document.getElementById('cat-valuecombos') || document.getElementById('menuContainer');

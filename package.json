@@ -1,0 +1,16 @@
+{
+  "name": "truecafe-whatsapp-menu",
+  "version": "1.0.0",
+  "description": "TrueCafe WhatsApp Food Ordering Menu with Live Backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "whatsapp-menu",
+    "food-ordering",
+    "cafe"
+  ],
+  "author": "TrueCafe",
+  "license": "ISC"
+}
