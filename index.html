@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#133025">
-  <title>TrueCafe • Digital Menu & WhatsApp Order</title>
+  <title>TrueCafe • Pizza khaega kya Binod? 🍕</title>
   <meta name="description" content="TrueCafe Deoband - Minimalistic pure vegetarian menu. Order fresh pizzas, burgers, shakes and coffee directly on WhatsApp. Minimum order ₹100.">
 
   <!-- Inter / Plus Jakarta Sans for modern readability -->
@@ -138,6 +138,73 @@
     }
 
     [data-theme="dark"] .status-badge { color: #86efac; }
+
+    .brand-tagline {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent-amber);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      line-height: 1.1;
+      margin-top: 2px;
+    }
+
+    [data-theme="dark"] .brand-tagline {
+      color: #f6ad55;
+    }
+
+    /* Meme Tagline Ticker */
+    .meme-ticker-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: var(--surface-subtle);
+      border: 1px dashed var(--accent-amber);
+      border-radius: var(--radius-full);
+      padding: 5px 12px;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s ease;
+    }
+
+    .meme-ticker-bar:hover {
+      background: var(--accent-surface);
+      border-color: #c05c1d;
+      transform: translateY(-1px);
+    }
+
+    .meme-badge {
+      background: var(--accent-amber);
+      color: #ffffff;
+      font-size: 0.64rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .meme-text {
+      flex: 1;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: opacity 0.2s ease;
+    }
+
+    .meme-hint {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
 
     .status-dot {
       width: 6px;
@@ -875,10 +942,13 @@
   <header class="app-header">
     <div class="header-inner">
       <a href="./index.html" class="brand-group">
-        <div class="brand-icon">☕</div>
+        <div class="brand-icon">🍕</div>
         <div>
-          <span class="brand-name font-serif">TrueCafe</span>
-          <span class="status-badge"><span class="status-dot"></span> Open</span>
+          <div style="display: flex; align-items: center; gap: 4px;">
+            <span class="brand-name font-serif">TrueCafe</span>
+            <span class="status-badge"><span class="status-dot"></span> Open</span>
+          </div>
+          <div class="brand-tagline">Pizza khaega kya Binod? 🍕</div>
         </div>
       </a>
 
@@ -902,6 +972,13 @@
   <!-- Sticky Menu Bar: Search + Category Pills -->
   <div class="menu-bar">
     <div class="menu-bar-inner">
+      <!-- Meme Tagline Ticker -->
+      <div class="meme-ticker-bar" id="memeBar" onclick="cycleMeme()" title="Tap to switch meme!">
+        <div class="meme-badge">🍕 MEME VIBE</div>
+        <div class="meme-text" id="memeText">Pizza khaega kya Binod? 🍕</div>
+        <div class="meme-hint">Tap for next 😂</div>
+      </div>
+
       <div class="search-row">
         <div class="search-box">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -1814,10 +1891,34 @@
       }
     }
 
+    // Relatable Desi Foodie & Binod Memes
+    const MEME_LIST = [
+      "Pizza khaega kya Binod? 🍕",
+      "Dekh raha hai na Binod... kaise chupke-chupke pizza cart me add ho raha hai! 👀",
+      "Binod: 'Bhai humko toh bas extra cheese aur garam pizza chahiye!' 🧀",
+      "Roz roz wahi daal-roti? Binod, chupchap pizza order kar le! 😋",
+      "Panchayat baad me karenge, pehle TrueCafe ka burger aane do 🍔",
+      "Jal lijiye... thak gaye honge menu scroll karte karte 🥤",
+      "Control Majnu bhai control... pehle pizza order toh hone de! 🍕",
+      "Yeh scheme sirf tere liye hai Binod: ₹100 me pet bhar maje! 🚀"
+    ];
+    let memeIdx = 0;
+    function cycleMeme() {
+      const textEl = document.getElementById('memeText');
+      if (!textEl) return;
+      textEl.style.opacity = '0';
+      setTimeout(() => {
+        memeIdx = (memeIdx + 1) % MEME_LIST.length;
+        textEl.textContent = MEME_LIST[memeIdx];
+        textEl.style.opacity = '1';
+      }, 180);
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       initTheme();
       initSaved();
       loadMenu();
+      setInterval(cycleMeme, 5000);
     });
   </script>
 </body>
