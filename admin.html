@@ -1,0 +1,522 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#15382B">
+  <title>TrueCafe Admin • Menu & Pricing Manager</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --brand-green: #15382B;
+      --brand-green-dark: #0E271E;
+      --brand-green-light: #235240;
+      --brand-green-surface: #E8EFEA;
+      --accent-amber: #D97736;
+      --bg: #F9F6F0;
+      --surface: #FFFFFF;
+      --surface-subtle: #F4EFE6;
+      --border: #E5DFD4;
+      --text-main: #1D231F;
+      --text-muted: #66726A;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --radius-full: 9999px;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+      --shadow-md: 0 6px 20px rgba(0,0,0,0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      line-height: 1.5;
+      padding-bottom: 60px;
+    }
+
+    .font-serif {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    header {
+      background: var(--brand-green-dark);
+      color: #FFFFFF;
+      padding: 24px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .header-wrap {
+      max-width: 1040px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .header-title-box h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .header-title-box p {
+      color: #CAD8D0;
+      font-size: 0.85rem;
+      margin-top: 4px;
+    }
+
+    .back-btn {
+      background: rgba(255, 255, 255, 0.12);
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 9px 18px;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 700;
+      transition: background 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    main {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 24px 18px;
+    }
+
+    .notice-card {
+      background: #FFFBEB;
+      border: 1px solid #FDE68A;
+      color: #92400E;
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .notice-card strong {
+      color: #78350F;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+      align-items: center;
+    }
+
+    .btn {
+      padding: 10px 18px;
+      border-radius: var(--radius-md);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s;
+    }
+
+    .btn-primary {
+      background: var(--brand-green);
+      color: #FFFFFF;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-primary:hover {
+      background: var(--brand-green-light);
+    }
+
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--brand-green);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface-subtle);
+      border-color: var(--text-muted);
+    }
+
+    .btn-accent {
+      background: var(--accent-amber);
+      color: #FFFFFF;
+    }
+
+    .btn-accent:hover {
+      background: #c26527;
+    }
+
+    .file-input { display: none; }
+
+    .status-msg {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--brand-green);
+      min-height: 24px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 24px 0 16px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .items-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .item-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .item-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1.2fr 100px;
+      gap: 10px;
+    }
+
+    @media (max-width: 650px) {
+      .item-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .field-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .field-input, .field-select {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: 0.88rem;
+      color: var(--text-main);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .field-input:focus, .field-select:focus {
+      border-color: var(--brand-green);
+    }
+
+    .item-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .btn-remove {
+      background: #FEE2E2;
+      color: #991B1B;
+      border: 1px solid #FECACA;
+      border-radius: var(--radius-sm);
+      padding: 6px 12px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-remove:hover {
+      background: #FCA5A5;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-wrap">
+      <div class="header-title-box">
+        <h1 class="font-serif">TrueCafe Menu Admin</h1>
+        <p>Edit pricing, dish availability, and menu items</p>
+      </div>
+      <a href="./index.html" class="back-btn">
+        <span>←</span>
+        <span>Customer Menu</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <div class="notice-card">
+      <strong>✨ Live Browser Sync:</strong> Changes saved here are stored in your browser's local memory and instantly update the customer menu page. To publish for all visitors across different devices, click <strong>Download menu.json</strong> and place the file in the website root directory.
+    </div>
+
+    <div class="toolbar">
+      <button type="button" class="btn btn-primary" id="addBtn">+ Add New Dish</button>
+      <button type="button" class="btn btn-accent" id="saveBtn">💾 Save to Browser</button>
+      <button type="button" class="btn btn-secondary" id="exportBtn">📥 Download menu.json</button>
+      <label class="btn btn-secondary" for="importFile">📤 Import menu.json</label>
+      <input type="file" id="importFile" class="file-input" accept=".json,application/json">
+    </div>
+
+    <div id="statusMsg" class="status-msg"></div>
+
+    <div class="section-title font-serif">
+      <span>Menu Catalog (<span id="totalCount">0</span>)</span>
+    </div>
+
+    <div class="items-container" id="itemsContainer">
+      <!-- Rendered by JS -->
+    </div>
+  </main>
+
+  <script>
+    const KEY = "truecafe-menu";
+    let menu = [];
+
+    const DEFAULTS = [
+      { id: "p1", name: "Margherita Pizza", category: "Pizzas", description: "Classic Neapolitan crust with rich tomato passata, diced mozzarella, and fresh basil.", price: 179, isVeg: true, jainFriendly: true, bestseller: true, image: "images/pizza.png", available: true },
+      { id: "p2", name: "Tandoori Paneer Pizza", category: "Pizzas", description: "Smoky marinated malai paneer, diced red onions, crisp capsicum & herb spiced sauce.", price: 229, isVeg: true, jainFriendly: false, bestseller: true, image: "images/pizza.png", available: true },
+      { id: "p3", name: "New Garden Fresh Pizza", category: "Pizzas", description: "Sweet golden corn, crunchy capsicum, red onion flakes & melted double cheese.", price: 179, isVeg: true, jainFriendly: false, bestseller: false, image: "images/pizza.png", available: true },
+      { id: "p4", name: "Cheese Onion & Paneer Pizza", category: "Pizzas", description: "Loaded mozzarella base topped with charred spiced paneer cubes and sweet red onions.", price: 179, isVeg: true, jainFriendly: false, bestseller: false, image: "images/pizza.png", available: true },
+      { id: "p5", name: "Mexican Garden Wave Pizza", category: "Pizzas", description: "Spicy pickled jalapeños, sweet corn, green peppers, paneer and Mexican salsa swirl.", price: 199, isVeg: true, jainFriendly: false, bestseller: true, image: "images/pizza.png", available: true },
+      { id: "b1", name: "Mix Veg Tikki Burger", category: "Burgers", description: "Golden crumbed vegetable patty, crisp shredded lettuce, and creamy house secret sauce.", price: 80, isVeg: true, jainFriendly: false, bestseller: false, image: "images/burger.png", available: true },
+      { id: "b2", name: "Cheese Burger", category: "Burgers", description: "Crispy herb potato patty topped with melted cheddar slice, gherkins & herb mayo.", price: 100, isVeg: true, jainFriendly: false, bestseller: false, image: "images/burger.png", available: true },
+      { id: "b3", name: "Tandoori Cheese Burger", category: "Burgers", description: "Flame-spiced paneer patty layered with cheddar cheese, tandoori relish & crunch greens.", price: 130, isVeg: true, jainFriendly: false, bestseller: true, image: "images/burger.png", available: true },
+      { id: "b4", name: "Maharaja Burger", category: "Burgers", description: "Grand double patty stack with double melted cheese, sliced tomatoes, jalapeños & signature dip.", price: 190, isVeg: true, jainFriendly: false, bestseller: true, image: "images/burger.png", available: true },
+      { id: "s1", name: "Cheese Garlic Bread", category: "Bakery & Sides", description: "Freshly toasted sourdough loaf brushed with roasted garlic herb butter & molten mozzarella.", price: 140, isVeg: true, jainFriendly: false, bestseller: true, image: "images/healthy.png", available: true },
+      { id: "d1", name: "Choco Lava Cake", category: "Desserts", description: "Warm, rich chocolate sponge cake with an irresistible bubbling dark chocolate molten core.", price: 90, isVeg: true, jainFriendly: true, bestseller: true, image: "images/desserts.png", available: true },
+      { id: "bv1", name: "Cold Coffee", category: "Beverages & Shakes", description: "Signature slow-pulled espresso whipped with chilled dairy & dark chocolate shavings.", price: 119, isVeg: true, jainFriendly: true, bestseller: true, image: "images/healthy.png", available: true },
+      { id: "bv2", name: "Kitkat Shake", category: "Beverages & Shakes", description: "Crushed chocolate wafer bars churned into thick vanilla fudge shake.", price: 119, isVeg: true, jainFriendly: true, bestseller: true, image: "images/healthy.png", available: true },
+      { id: "bv3", name: "Chocolate Shake", category: "Beverages & Shakes", description: "Double dutch dark chocolate shake topped with rich chocolate fudge drizzle.", price: 99, isVeg: true, jainFriendly: true, bestseller: false, image: "images/healthy.png", available: true },
+      { id: "bv4", name: "Vanilla Shake", category: "Beverages & Shakes", description: "Classic Madagascar vanilla bean ice cream spun thick with fresh cold milk.", price: 99, isVeg: true, jainFriendly: true, bestseller: false, image: "images/healthy.png", available: true },
+      { id: "bv5", name: "Butterscotch Shake", category: "Beverages & Shakes", description: "Creamy butterscotch crunch shake with caramelized praline nuggets.", price: 99, isVeg: true, jainFriendly: true, bestseller: false, image: "images/healthy.png", available: true },
+      { id: "bv6", name: "Strawberry Shake", category: "Beverages & Shakes", description: "Luscious wild strawberry purée blended with thick cream and ice cream.", price: 99, isVeg: true, jainFriendly: true, bestseller: false, image: "images/healthy.png", available: true },
+      { id: "bv7", name: "Green Mint Mojito", category: "Beverages & Shakes", description: "Hand-muddled garden mint leaves, raw cane sugar, tart lime & crisp soda on crushed ice.", price: 99, isVeg: true, jainFriendly: true, bestseller: false, image: "images/healthy.png", available: true },
+      { id: "bv8", name: "Blue Curacao Mojito", category: "Beverages & Shakes", description: "Sparkling citrus cooler infused with blue curaçao, mint sprigs, lime & soda.", price: 99, isVeg: true, jainFriendly: true, bestseller: false, image: "images/healthy.png", available: true },
+      { id: "bv9", name: "Fresh Lime Soda", category: "Beverages & Shakes", description: "Freshly squeezed lemons, rock salt, mint and effervescent club soda.", price: 99, isVeg: true, jainFriendly: true, bestseller: false, image: "images/healthy.png", available: true }
+    ];
+
+    async function loadData() {
+      try {
+        const stored = localStorage.getItem(KEY);
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            menu = parsed;
+          }
+        }
+      } catch (e) {}
+
+      if (!menu || !menu.length) {
+        try {
+          const res = await fetch('./menu.json');
+          if (res.ok) {
+            const json = await res.json();
+            if (Array.isArray(json) && json.length > 0) {
+              menu = json;
+            }
+          }
+        } catch (e) {}
+      }
+
+      if (!menu || !menu.length) {
+        menu = DEFAULTS.map(x => ({ ...x }));
+      }
+
+      render();
+    }
+
+    function save() {
+      localStorage.setItem(KEY, JSON.stringify(menu));
+      setStatus('✓ Successfully saved in this browser! The customer menu is now updated.');
+    }
+
+    function setStatus(msg) {
+      const el = document.getElementById('statusMsg');
+      el.textContent = msg;
+      setTimeout(() => { if (el.textContent === msg) el.textContent = ''; }, 4000);
+    }
+
+    function render() {
+      const container = document.getElementById('itemsContainer');
+      document.getElementById('totalCount').textContent = menu.length;
+      container.innerHTML = '';
+
+      menu.forEach((item, idx) => {
+        const card = document.createElement('article');
+        card.className = 'item-card';
+
+        card.innerHTML = `
+          <div class="item-grid">
+            <div class="field">
+              <label class="field-label">Dish Name</label>
+              <input type="text" class="field-input val-name" value="${item.name || ''}" placeholder="Item name">
+            </div>
+
+            <div class="field">
+              <label class="field-label">Category</label>
+              <input type="text" class="field-input val-category" value="${item.category || ''}" placeholder="Pizzas, Burgers, etc.">
+            </div>
+
+            <div class="field">
+              <label class="field-label">Price (₹)</label>
+              <input type="number" class="field-input val-price" value="${item.price || 0}" min="0" step="1">
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field-label">Description</label>
+            <input type="text" class="field-input val-desc" value="${item.description || ''}" placeholder="Ingredients, taste, toppings">
+          </div>
+
+          <div class="item-meta-row">
+            <div class="checkbox-group">
+              <label class="checkbox-item">
+                <input type="checkbox" class="val-available" ${item.available !== false ? 'checked' : ''}>
+                <span>Available</span>
+              </label>
+
+              <label class="checkbox-item">
+                <input type="checkbox" class="val-bestseller" ${item.bestseller ? 'checked' : ''}>
+                <span>★ Bestseller</span>
+              </label>
+
+              <label class="checkbox-item">
+                <input type="checkbox" class="val-jain" ${item.jainFriendly ? 'checked' : ''}>
+                <span>🌾 Jain Friendly</span>
+              </label>
+            </div>
+
+            <button type="button" class="btn-remove">Remove Dish</button>
+          </div>
+        `;
+
+        // Event bindings
+        card.querySelector('.val-name').addEventListener('input', (e) => item.name = e.target.value);
+        card.querySelector('.val-category').addEventListener('input', (e) => item.category = e.target.value);
+        card.querySelector('.val-price').addEventListener('input', (e) => item.price = Number(e.target.value));
+        card.querySelector('.val-desc').addEventListener('input', (e) => item.description = e.target.value);
+        card.querySelector('.val-available').addEventListener('change', (e) => item.available = e.target.checked);
+        card.querySelector('.val-bestseller').addEventListener('change', (e) => item.bestseller = e.target.checked);
+        card.querySelector('.val-jain').addEventListener('change', (e) => item.jainFriendly = e.target.checked);
+
+        card.querySelector('.btn-remove').addEventListener('click', () => {
+          if (confirm(`Remove "${item.name}" from the menu?`)) {
+            menu.splice(idx, 1);
+            render();
+            setStatus(`Removed dish.`);
+          }
+        });
+
+        container.appendChild(card);
+      });
+    }
+
+    document.getElementById('addBtn').addEventListener('click', () => {
+      menu.unshift({
+        id: 'tc-' + Date.now(),
+        name: 'New Cafe Dish',
+        category: 'Pizzas',
+        description: 'Freshly prepared specialty dish.',
+        price: 150,
+        isVeg: true,
+        jainFriendly: false,
+        bestseller: false,
+        image: 'images/pizza.png',
+        available: true
+      });
+      render();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setStatus('Added new blank item at the top. Remember to click Save!');
+    });
+
+    document.getElementById('saveBtn').addEventListener('click', save);
+
+    document.getElementById('exportBtn').addEventListener('click', () => {
+      const blob = new Blob([JSON.stringify(menu, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'menu.json';
+      a.click();
+      URL.revokeObjectURL(a.href);
+      setStatus('Downloaded menu.json file.');
+    });
+
+    document.getElementById('importFile').addEventListener('change', async (e) => {
+      try {
+        const file = e.target.files[0];
+        if (!file) return;
+        const text = await file.text();
+        const json = JSON.parse(text);
+        if (Array.isArray(json)) {
+          menu = json;
+          render();
+          save();
+          setStatus('✓ Successfully imported and saved menu.');
+        } else {
+          alert('Invalid JSON structure: Expected an array of dishes.');
+        }
+      } catch (err) {
+        alert('Could not parse JSON file.');
+      }
+      e.target.value = '';
+    });
+
+    document.addEventListener('DOMContentLoaded', loadData);
+  </script>
+</body>
+</html>
