@@ -501,12 +501,23 @@
       background: transparent;
       border: none;
       color: var(--text-muted);
-      font-size: 0.7rem;
+      font-size: 0.69rem;
       font-weight: 700;
-      padding: 2px 8px;
+      padding: 2px 7px;
       border-radius: var(--radius-full);
       cursor: pointer;
       transition: all 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      white-space: nowrap;
+    }
+
+    .portion-btn .size-text-short { display: inline; }
+    .portion-btn .size-text-long { display: none; }
+    @media (min-width: 480px) {
+      .portion-btn .size-text-short { display: none; }
+      .portion-btn .size-text-long { display: inline; }
     }
 
     .portion-btn.active {
@@ -1208,12 +1219,54 @@
       }
     };
 
+    const SIZE_CONFIG = {
+      small: { name: 'Small', short: 'S', emoji: '🤏', inch: '7"' },
+      medium: { name: 'Medium', short: 'M', emoji: '🍕', inch: '9"' },
+      large: { name: 'Large', short: 'L', emoji: '👑', inch: '12"' }
+    };
+
+    function getItemPortionInfo(item, portion) {
+      if (!item) return { price: 0, label: '', shortLabel: '', badgeText: '', isPizzaSize: false };
+      if (item.sizes) {
+        const p = (portion === 'small' || portion === 'medium' || portion === 'large') ? portion : 'medium';
+        const cfg = SIZE_CONFIG[p];
+        const price = (item.sizes[p] !== undefined) ? item.sizes[p] : item.price;
+        return {
+          price,
+          portionKey: p,
+          label: `${cfg.emoji} ${cfg.name} (${cfg.inch})`,
+          shortLabel: `${cfg.emoji} ${cfg.short}`,
+          badgeText: `${cfg.emoji} ${cfg.name}`,
+          isPizzaSize: true
+        };
+      } else if (item.hasHalf && item.halfPrice) {
+        const p = portion === 'half' ? 'half' : 'full';
+        const price = p === 'half' ? item.halfPrice : item.price;
+        return {
+          price,
+          portionKey: p,
+          label: p === 'half' ? 'Half Plate' : 'Full Plate',
+          shortLabel: p === 'half' ? 'Half' : 'Full',
+          badgeText: p === 'half' ? 'Half Plate' : 'Full Plate',
+          isPizzaSize: false
+        };
+      }
+      return {
+        price: item.price,
+        portionKey: 'full',
+        label: '',
+        shortLabel: '',
+        badgeText: '',
+        isPizzaSize: false
+      };
+    }
+
     const DEFAULT_MENU = [
-      { id: "p1", name: "Margherita Pizza", category: "Pizzas", description: "Mozzarella, tomato passata, fresh basil", price: 179, hasHalf: true, halfPrice: 109, isVeg: true, jainFriendly: true, bestseller: true, image: "images/pizza.png", available: true },
-      { id: "p2", name: "Tandoori Paneer Pizza", category: "Pizzas", description: "Tandoori paneer, capsicum, red onion", price: 229, hasHalf: true, halfPrice: 139, isVeg: true, jainFriendly: false, bestseller: true, image: "images/pizza.png", available: true },
-      { id: "p3", name: "New Garden Fresh Pizza", category: "Pizzas", description: "Sweet corn, capsicum, onion, double cheese", price: 179, hasHalf: true, halfPrice: 109, isVeg: true, jainFriendly: false, bestseller: false, image: "images/pizza.png", available: true },
-      { id: "p4", name: "Cheese Onion & Paneer Pizza", category: "Pizzas", description: "Spiced paneer, red onion, mozzarella", price: 179, hasHalf: true, halfPrice: 109, isVeg: true, jainFriendly: false, bestseller: false, image: "images/pizza.png", available: true },
-      { id: "p5", name: "Mexican Garden Wave Pizza", category: "Pizzas", description: "Jalapeño, sweet corn, paneer, capsicum", price: 199, hasHalf: true, halfPrice: 119, isVeg: true, jainFriendly: false, bestseller: true, image: "images/pizza.png", available: true },
+      { id: "p1", name: "Margherita Pizza", category: "Pizzas", description: "Mozzarella, tomato passata, fresh basil", price: 179, sizes: { small: 109, medium: 179, large: 279 }, isVeg: true, jainFriendly: true, bestseller: true, image: "images/pizza.png", available: true },
+      { id: "p2", name: "Tandoori Paneer Pizza", category: "Pizzas", description: "Tandoori paneer, capsicum, red onion", price: 229, sizes: { small: 139, medium: 229, large: 349 }, isVeg: true, jainFriendly: false, bestseller: true, image: "images/pizza.png", available: true },
+      { id: "p3", name: "New Garden Fresh Pizza", category: "Pizzas", description: "Sweet corn, capsicum, onion, double cheese", price: 179, sizes: { small: 109, medium: 179, large: 279 }, isVeg: true, jainFriendly: false, bestseller: false, image: "images/pizza.png", available: true },
+      { id: "p4", name: "Cheese Onion & Paneer Pizza", category: "Pizzas", description: "Spiced paneer, red onion, mozzarella", price: 179, sizes: { small: 109, medium: 179, large: 279 }, isVeg: true, jainFriendly: false, bestseller: false, image: "images/pizza.png", available: true },
+      { id: "p5", name: "Mexican Garden Wave Pizza", category: "Pizzas", description: "Jalapeño, sweet corn, paneer, capsicum", price: 199, sizes: { small: 119, medium: 199, large: 319 }, isVeg: true, jainFriendly: false, bestseller: true, image: "images/pizza.png", available: true },
       { id: "b1", name: "Mix Veg Tikki Burger", category: "Burgers", description: "Crispy veg patty, shredded lettuce, house mayo", price: 80, hasHalf: false, halfPrice: null, isVeg: true, jainFriendly: false, bestseller: false, image: "images/burger.png", available: true },
       { id: "b2", name: "Cheese Burger", category: "Burgers", description: "Herb potato patty, cheddar slice, gherkins", price: 100, hasHalf: false, halfPrice: null, isVeg: true, jainFriendly: false, bestseller: false, image: "images/burger.png", available: true },
       { id: "b3", name: "Tandoori Cheese Burger", category: "Burgers", description: "Paneer patty, cheddar cheese, tandoori relish", price: 130, hasHalf: false, halfPrice: null, isVeg: true, jainFriendly: false, bestseller: true, image: "images/burger.png", available: true },
@@ -1375,7 +1428,13 @@
         } catch {}
       }
 
-      menuItems = loaded || DEFAULT_MENU;
+      menuItems = (loaded || DEFAULT_MENU).map(item => {
+        if (item.category === 'Pizzas' && !item.sizes) {
+          const d = DEFAULT_MENU.find(x => x.id === item.id);
+          if (d && d.sizes) return { ...item, sizes: d.sizes };
+        }
+        return item;
+      });
       menuItems.forEach((i, idx) => { if (!i.id) i.id = 'tc-' + idx; });
 
       updateLanguageUI();
@@ -1478,9 +1537,9 @@
       const card = document.createElement('article');
       card.className = 'dish-card';
 
-      // Default portion is Full if not set
+      // Default portion is Medium for Pizzas, Full for others
       if (!selectedPortions.has(item.id)) {
-        selectedPortions.set(item.id, 'full');
+        selectedPortions.set(item.id, item.sizes ? 'medium' : 'full');
       }
       const activePortion = selectedPortions.get(item.id);
 
@@ -1498,9 +1557,23 @@
         >
       ` : `<div class="thumb-fallback">🍽️</div>`;
 
-      // Portion Switcher (Full / Half Plate)
+      // Portion Switcher: Small/Medium/Large with emoji for Pizzas, Full/Half for others
       let portionHtml = '';
-      if (item.hasHalf && item.halfPrice) {
+      if (item.sizes) {
+        portionHtml = `
+          <div class="portion-selector" data-item="${item.id}">
+            <button type="button" class="portion-btn ${activePortion === 'small' ? 'active' : ''}" data-p="small" title="Small (7 inch)">
+              <span>🤏</span> <span class="size-text-long">Small</span><span class="size-text-short">S</span> ${formatINR(item.sizes.small)}
+            </button>
+            <button type="button" class="portion-btn ${activePortion === 'medium' ? 'active' : ''}" data-p="medium" title="Medium (9 inch)">
+              <span>🍕</span> <span class="size-text-long">Medium</span><span class="size-text-short">M</span> ${formatINR(item.sizes.medium)}
+            </button>
+            <button type="button" class="portion-btn ${activePortion === 'large' ? 'active' : ''}" data-p="large" title="Large (12 inch)">
+              <span>👑</span> <span class="size-text-long">Large</span><span class="size-text-short">L</span> ${formatINR(item.sizes.large)}
+            </button>
+          </div>
+        `;
+      } else if (item.hasHalf && item.halfPrice) {
         portionHtml = `
           <div class="portion-selector" data-item="${item.id}">
             <button type="button" class="portion-btn ${activePortion === 'full' ? 'active' : ''}" data-p="full">Full ${formatINR(item.price)}</button>
@@ -1509,7 +1582,8 @@
         `;
       }
 
-      const currentPrice = (activePortion === 'half' && item.hasHalf) ? item.halfPrice : item.price;
+      const pInfo = getItemPortionInfo(item, activePortion);
+      const currentPrice = pInfo.price;
 
       card.innerHTML = `
         <div class="dish-info">
@@ -1528,7 +1602,7 @@
       `;
 
       // Handle Portion Switch click
-      if (item.hasHalf) {
+      if (item.sizes || item.hasHalf) {
         const portionBtns = card.querySelectorAll('.portion-btn');
         portionBtns.forEach(pbtn => {
           pbtn.addEventListener('click', (e) => {
@@ -1548,7 +1622,8 @@
     }
 
     function renderCardAction(container, item) {
-      const portion = selectedPortions.get(item.id) || 'full';
+      const defaultPortion = item.sizes ? 'medium' : 'full';
+      const portion = selectedPortions.get(item.id) || defaultPortion;
       const cartKey = `${item.id}:${portion}`;
       const qty = cart.get(cartKey) || 0;
       container.innerHTML = '';
@@ -1562,7 +1637,8 @@
           cart.set(cartKey, 1);
           renderCardAction(container, item);
           updateCartState();
-          const pLabel = item.hasHalf ? ` (${portion === 'half' ? 'Half' : 'Full'})` : '';
+          const pInfo = getItemPortionInfo(item, portion);
+          const pLabel = pInfo.badgeText ? ` (${pInfo.badgeText})` : '';
           showToast(`${item.name}${pLabel} added`, '🛒');
         });
         container.appendChild(btn);
@@ -1602,7 +1678,7 @@
         const [itemId, portion] = cartKey.split(':');
         const item = menuItems.find(i => i.id === itemId);
         if (item) {
-          const itemPrice = (portion === 'half' && item.hasHalf) ? item.halfPrice : item.price;
+          const itemPrice = getItemPortionInfo(item, portion).price;
           totalQty += qty;
           subtotal += (itemPrice * qty);
         }
@@ -1658,14 +1734,15 @@
         const item = menuItems.find(i => i.id === itemId);
         if (!item) return;
 
-        const itemPrice = (portion === 'half' && item.hasHalf) ? item.halfPrice : item.price;
-        const portionSuffix = item.hasHalf ? ` (${portion === 'half' ? 'Half Plate' : 'Full Plate'})` : '';
+        const pInfo = getItemPortionInfo(item, portion);
+        const itemPrice = pInfo.price;
+        const portionSuffix = pInfo.badgeText ? ` (${pInfo.label || pInfo.badgeText})` : '';
 
         const row = document.createElement('div');
         row.className = 'item-summary-row';
         row.innerHTML = `
           <div style="flex: 1; min-width: 0;">
-            <div class="row-title truncate">${item.name} <span style="font-size:0.75rem; color:var(--accent-amber); font-weight:600;">${portionSuffix}</span></div>
+            <div class="row-title truncate">${item.name} <span style="font-size:0.75rem; color:var(--accent-amber); font-weight:700;">${portionSuffix}</span></div>
             <div class="row-math">${formatINR(itemPrice)} × ${qty} = <strong>${formatINR(itemPrice * qty)}</strong></div>
           </div>
           <div class="stepper-mini" style="margin-top:0;">
@@ -1786,7 +1863,7 @@
         const [itemId, portion] = cartKey.split(':');
         const item = menuItems.find(i => i.id === itemId);
         if (item) {
-          const itemPrice = (portion === 'half' && item.hasHalf) ? item.halfPrice : item.price;
+          const itemPrice = getItemPortionInfo(item, portion).price;
           subtotal += (itemPrice * qty);
         }
       });
@@ -1829,8 +1906,9 @@
         const [itemId, portion] = cartKey.split(':');
         const item = menuItems.find(i => i.id === itemId);
         if (item) {
-          const itemPrice = (portion === 'half' && item.hasHalf) ? item.halfPrice : item.price;
-          const portionText = item.hasHalf ? ` (${portion === 'half' ? 'Half' : 'Full'})` : '';
+          const pInfo = getItemPortionInfo(item, portion);
+          const itemPrice = pInfo.price;
+          const portionText = pInfo.badgeText ? ` (${pInfo.label || pInfo.badgeText})` : '';
           const total = itemPrice * qty;
           lines.push(`• ${qty} × ${item.name}${portionText} — ${formatINR(total)}`);
         }
