@@ -1122,6 +1122,219 @@
     .btn-secondary-action:hover {
       background: var(--surface-hover);
     }
+
+    /* Welcome Meme Popup Styling */
+    .welcome-card-modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+      animation: welcomePop 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes welcomePop {
+      0% { opacity: 0; transform: scale(0.92) translateY(20px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .welcome-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface-subtle);
+    }
+    .welcome-header-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #DC2626;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .live-pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #EF4444;
+      animation: livePulse 1.6s infinite;
+    }
+    @keyframes livePulse {
+      0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+      70% { transform: scale(1.15); box-shadow: 0 0 0 7px rgba(239, 68, 68, 0); }
+      100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+    }
+    .welcome-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+      transition: all 0.15s;
+    }
+    .welcome-close:hover {
+      background: var(--surface-hover);
+      color: var(--text);
+    }
+    .welcome-modal-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .welcome-meme-art-wrap {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #14382B;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+    }
+    .welcome-meme-img {
+      width: 100%;
+      height: auto;
+      max-height: 220px;
+      display: block;
+      object-fit: cover;
+    }
+    .live-ticker-floating {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-full);
+      padding: 3px 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+    .live-ticker-floating .live-chip {
+      color: #F87171;
+      font-weight: 900;
+    }
+    .welcome-dialogue-box {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      text-align: center;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .welcome-meme-badge {
+      display: inline-block;
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FCD34D;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 2px 10px;
+      border-radius: var(--radius-full);
+      margin-bottom: 8px;
+      letter-spacing: 0.04em;
+    }
+    [data-theme="dark"] .welcome-meme-badge {
+      background: #451A03;
+      color: #FDE68A;
+      border-color: #78350F;
+    }
+    .welcome-dialogue-title {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+    .welcome-dialogue-desc {
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.45;
+      margin-bottom: 8px;
+    }
+    .welcome-sub-note {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: var(--surface);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-weight: 600;
+    }
+    .welcome-dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      margin: 2px 0;
+    }
+    .welcome-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--border);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .welcome-dot.active {
+      width: 20px;
+      border-radius: 4px;
+      background: var(--accent-amber);
+    }
+    .welcome-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .welcome-btn-order {
+      background: linear-gradient(135deg, #D97736 0%, #EA580C 100%);
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(217, 119, 54, 0.35);
+      border: none;
+      width: 100%;
+    }
+    .welcome-btn-order:hover {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
+    }
+    .welcome-action-subrow {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .btn-welcome-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FCD34D;
+      padding: 5px 10px;
+      border-radius: var(--radius-full);
+      font-size: 0.72rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    [data-theme="dark"] .btn-welcome-trigger {
+      background: #451A03;
+      color: #FDE68A;
+      border-color: #78350F;
+    }
+    .btn-welcome-trigger:hover {
+      filter: brightness(1.08);
+      transform: scale(1.02);
+    }
   </style>
 </head>
 <body>
@@ -1141,6 +1354,11 @@
       </a>
 
       <div class="header-actions">
+        <!-- Live Welcome Meme Popup Button -->
+        <button id="openWelcomeMeme" class="btn-welcome-trigger" type="button" title="Pizza Khaega Binod? Live Meme">
+          <span>🍕</span> <span>Binod Meme</span>
+        </button>
+
         <!-- Hinglish / English Toggle -->
         <button id="langToggle" class="btn-icon-sm" type="button" title="Switch Language">
           <span id="langFlag">🇮🇳</span>
@@ -1348,6 +1566,62 @@
           <button type="button" class="btn-secondary-action" id="btnDoneOrder">
             🍔 Ek Aur Order Lagana Hai
           </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Welcome Binod Meme Popup Modal -->
+  <div class="modal-backdrop" id="welcomeModal" style="z-index: 150;">
+    <div class="drawer-modal welcome-card-modal" role="dialog" aria-modal="true" style="max-height: 94vh; max-width: 480px; margin: auto;">
+      <div class="welcome-header">
+        <div class="welcome-header-tag">
+          <span class="live-pulse-dot"></span>
+          <span>LIVE MEME FEED • TRUECAFE</span>
+        </div>
+        <button type="button" class="btn-close welcome-close" id="closeWelcomeModal" aria-label="Close Welcome Popup">✕</button>
+      </div>
+
+      <div class="welcome-modal-body">
+        <!-- SVG Meme Graphic -->
+        <div class="welcome-meme-art-wrap">
+          <img src="images/meme_welcome.svg" alt="Pizza Khaega Kya Binod Meme" class="welcome-meme-img" id="welcomeMemeImg">
+          <div class="live-ticker-floating">
+            <span class="live-chip">🔴 LIVE</span>
+            <span id="welcomeLiveTimer">Real-time Auto Flip</span>
+          </div>
+        </div>
+
+        <!-- Dynamic Live Changing Text Area -->
+        <div class="welcome-dialogue-box" id="welcomeDialogueBox">
+          <span class="welcome-meme-badge" id="welcomeBadge">🍕 DEOBAND SPECIAL MEME</span>
+          <h3 class="welcome-dialogue-title" id="welcomeTitle">"Pizza khaega kya Binod? 🍕"</h3>
+          <p class="welcome-dialogue-desc" id="welcomeDesc">
+            Dekh raha hai na Binod... kaise fresh hand-tossed base pe extra cheese melt ho rahi hai!
+          </p>
+          <div class="welcome-sub-note" id="welcomeSub">
+            Roz wahi daal-roti se bore ho gaye? Ek click mein mast pizza order lagao! 🚀
+          </div>
+        </div>
+
+        <!-- Step indicators for live rotating dialogues -->
+        <div class="welcome-dots" id="welcomeDots">
+          <!-- Rendered dynamically -->
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="welcome-actions">
+          <button type="button" class="btn-primary-action welcome-btn-order" id="btnWelcomeExplore">
+            🍕 Haan Bhai Khila! (Explore Menu)
+          </button>
+          <div class="welcome-action-subrow">
+            <button type="button" class="btn-secondary-action" id="btnNextMeme">
+              🔄 Agla Dialogue
+            </button>
+            <button type="button" class="btn-secondary-action" id="btnDismissWelcome">
+              Baad Mein Dekhenge
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -2316,10 +2590,147 @@
       }, 180);
     }
 
+    // Welcome Memes Pool (Live Dynamic Updates)
+    const WELCOME_MEMES = [
+      {
+        badge: "🍕 DEOBAND SPECIAL MEME",
+        title: "Pizza khaega kya Binod? 🍕",
+        punchline: "Dekh raha hai na Binod... kaise fresh hand-tossed base pe extra mozzarella melt ho rahi hai!",
+        sub: "Roz wahi daal-roti se bore ho gaye? Ek click mein mast pizza order lagao! 🚀"
+      },
+      {
+        badge: "🧀 EXTRA CHEESE BURST",
+        title: "Binod: 'Bhai humko toh TrueCafe ka pizza chahiye!' 🤤",
+        punchline: "Garma-garam slice, crunchy crust aur cheese pull jo reel banwane par majboor kar de!",
+        sub: "🤏 Small (7\"), 🍕 Medium (9\"), 👑 Large (12\") — apne mood ke mutabiq chuno!"
+      },
+      {
+        badge: "🛵 LIVE DEOBAND BHUKKAD ALERT",
+        title: "Bhookh lagi hai kya Binod? ⚡",
+        punchline: "Deoband mein 25–35 minute ke andar seedha darwaze par delivery!",
+        sub: "WhatsApp pe direct order jata hai — zero bicholiya, instant confirmation!"
+      },
+      {
+        badge: "🚫🧅 JAIN & BINA PYAAR SPECIAL",
+        title: "Bina Pyaaz-Lehsun ka milega Binod? 🧅❌",
+        punchline: "Haan bhai 100% shuddh Jain & Bina Pyaaz wale pizza bhi ekdum kadak available hain!",
+        sub: "Menu mein 'Bina Pyaaz' filter dabao aur befikr enjoy karo!"
+      },
+      {
+        badge: "🔥 MEME OF THE MOMENT",
+        title: "Control Majnu bhai control... Pehle Pizza aane do! 🍕",
+        punchline: "Panchayat baad mein hogi, pehle ₹100 ki minimum deal ka full maza uthao!",
+        sub: "TrueCafe Deoband: Swaad aisa jo Binod ko bhi hamesha yaad rahe!"
+      }
+    ];
+
+    let welcomeMemeIdx = 0;
+    let welcomeInterval = null;
+
+    function renderWelcomeDots() {
+      const dotsContainer = document.getElementById('welcomeDots');
+      if (!dotsContainer) return;
+      dotsContainer.innerHTML = WELCOME_MEMES.map((_, i) => 
+        `<span class="welcome-dot ${i === welcomeMemeIdx ? 'active' : ''}" onclick="setWelcomeMeme(${i})"></span>`
+      ).join('');
+    }
+
+    function setWelcomeMeme(idx) {
+      welcomeMemeIdx = (idx + WELCOME_MEMES.length) % WELCOME_MEMES.length;
+      const box = document.getElementById('welcomeDialogueBox');
+      const item = WELCOME_MEMES[welcomeMemeIdx];
+      if (box && item) {
+        box.style.opacity = '0';
+        box.style.transform = 'translateY(4px)';
+        setTimeout(() => {
+          const badgeEl = document.getElementById('welcomeBadge');
+          const titleEl = document.getElementById('welcomeTitle');
+          const descEl = document.getElementById('welcomeDesc');
+          const subEl = document.getElementById('welcomeSub');
+          if (badgeEl) badgeEl.textContent = item.badge;
+          if (titleEl) titleEl.textContent = `"${item.title}"`;
+          if (descEl) descEl.textContent = item.punchline;
+          if (subEl) subEl.textContent = item.sub;
+          box.style.opacity = '1';
+          box.style.transform = 'translateY(0)';
+        }, 150);
+      }
+      renderWelcomeDots();
+    }
+
+    function nextWelcomeMeme() {
+      setWelcomeMeme(welcomeMemeIdx + 1);
+    }
+
+    function startWelcomeLiveTimer() {
+      if (welcomeInterval) clearInterval(welcomeInterval);
+      welcomeInterval = setInterval(() => {
+        nextWelcomeMeme();
+      }, 3500);
+    }
+
+    function stopWelcomeLiveTimer() {
+      if (welcomeInterval) {
+        clearInterval(welcomeInterval);
+        welcomeInterval = null;
+      }
+    }
+
+    function openWelcomeModal() {
+      const modal = document.getElementById('welcomeModal');
+      if (!modal) return;
+      setWelcomeMeme(welcomeMemeIdx);
+      modal.classList.add('open');
+      startWelcomeLiveTimer();
+    }
+
+    function closeWelcomeModal() {
+      const modal = document.getElementById('welcomeModal');
+      if (!modal) return;
+      modal.classList.remove('open');
+      stopWelcomeLiveTimer();
+    }
+
+    function initWelcomeMemeModal() {
+      const btnOpen = document.getElementById('openWelcomeMeme');
+      const btnClose = document.getElementById('closeWelcomeModal');
+      const btnDismiss = document.getElementById('btnDismissWelcome');
+      const btnNext = document.getElementById('btnNextMeme');
+      const btnExplore = document.getElementById('btnWelcomeExplore');
+      const modal = document.getElementById('welcomeModal');
+
+      if (btnOpen) btnOpen.addEventListener('click', openWelcomeModal);
+      if (btnClose) btnClose.addEventListener('click', closeWelcomeModal);
+      if (btnDismiss) btnDismiss.addEventListener('click', closeWelcomeModal);
+      if (btnNext) btnNext.addEventListener('click', () => {
+        nextWelcomeMeme();
+        startWelcomeLiveTimer();
+      });
+      if (btnExplore) btnExplore.addEventListener('click', () => {
+        closeWelcomeModal();
+        const pizzaSec = document.getElementById('cat-pizza') || document.getElementById('menuContainer');
+        if (pizzaSec) {
+          pizzaSec.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeWelcomeModal();
+        });
+      }
+
+      renderWelcomeDots();
+      // Automatically open welcome meme popup on landing after 600ms
+      setTimeout(() => {
+        openWelcomeModal();
+      }, 600);
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       initTheme();
       initSaved();
       loadMenu();
+      initWelcomeMemeModal();
       setInterval(cycleMeme, 5000);
     });
   </script>

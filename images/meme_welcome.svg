@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGradWelcome" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14382B" />
+      <stop offset="60%" stop-color="#0F281E" />
+      <stop offset="100%" stop-color="#07150F" />
+    </linearGradient>
+    <linearGradient id="pizzaGold" x1="0%" y1="0%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="50%" stop-color="#EA580C" />
+      <stop offset="100%" stop-color="#B45309" />
+    </linearGradient>
+    <linearGradient id="cheeseGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FEF08A" />
+      <stop offset="100%" stop-color="#FBBF24" />
+    </linearGradient>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E11D48" />
+      <stop offset="50%" stop-color="#F97316" />
+      <stop offset="100%" stop-color="#EAB308" />
+    </linearGradient>
+    <filter id="shadowWelcome" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="420" rx="20" fill="url(#bgGradWelcome)" />
+
+  <!-- Ambient Glow Circles -->
+  <circle cx="500" cy="80" r="120" fill="#EA580C" opacity="0.18" filter="blur(20px)" />
+  <circle cx="100" cy="340" r="140" fill="#15803D" opacity="0.2" filter="blur(20px)" />
+
+  <!-- Main Canvas Panel -->
+  <g transform="translate(25, 20)">
+    <!-- Top Big Meme Ribbon -->
+    <rect x="0" y="0" width="550" height="46" rx="12" fill="url(#headerGrad)" />
+    <text x="275" y="30" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="900" font-size="20" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.8">
+      🍕 PIZZA KHAYEGA KYA BINOD? 🍕
+    </text>
+
+    <!-- Comic Stage Box -->
+    <rect x="0" y="58" width="550" height="322" rx="16" fill="#172A21" stroke="#2D4D3D" stroke-width="2" />
+
+    <!-- Left Side: Binod Character -->
+    <g transform="translate(50, 90)">
+      <!-- Shoulder & Red Gamcha -->
+      <path d="M-20 160 Q25 130 85 130 Q145 130 190 160 L180 200 L-30 200 Z" fill="#DC2626" />
+      <!-- Gamcha Yellow Checks & Border -->
+      <path d="M-10 140 Q85 110 180 140" stroke="#FDE047" stroke-width="6" fill="none" stroke-linecap="round" />
+      <line x1="20" y1="135" x2="35" y2="195" stroke="#FDE047" stroke-width="3" stroke-dasharray="4,4" />
+      <line x1="80" y1="130" x2="90" y2="195" stroke="#FDE047" stroke-width="3" stroke-dasharray="4,4" />
+      <line x1="140" y1="135" x2="145" y2="195" stroke="#FDE047" stroke-width="3" stroke-dasharray="4,4" />
+
+      <!-- Kurta Collar -->
+      <path d="M15 150 Q85 140 155 150 L165 200 L5 200 Z" fill="#F8FAFC" />
+
+      <!-- Neck -->
+      <rect x="65" y="98" width="40" height="36" rx="10" fill="#FBBF24" />
+
+      <!-- Face -->
+      <ellipse cx="85" cy="72" rx="52" ry="56" fill="#FCD34D" />
+
+      <!-- Hair Style (Classic Desi Side-combed) -->
+      <path d="M36 50 Q85 6 134 50 Q122 22 85 22 Q48 22 36 50 Z" fill="#1E293B" />
+      <!-- Sideburns -->
+      <rect x="33" y="48" width="7" height="24" rx="3" fill="#1E293B" />
+      <rect x="130" y="48" width="7" height="24" rx="3" fill="#1E293B" />
+
+      <!-- Eyebrows (Arched, hungry & excited) -->
+      <path d="M48 48 Q64 40 76 50" stroke="#1E293B" stroke-width="4.5" fill="none" stroke-linecap="round" />
+      <path d="M94 50 Q106 40 122 48" stroke="#1E293B" stroke-width="4.5" fill="none" stroke-linecap="round" />
+
+      <!-- Eyes (Big shiny hungry eyes) -->
+      <ellipse cx="62" cy="62" rx="9" ry="11" fill="#FFFFFF" />
+      <circle cx="65" cy="62" r="5.5" fill="#1E293B" />
+      <circle cx="67" cy="59" r="2" fill="#FFFFFF" /> <!-- Sparkle -->
+
+      <ellipse cx="108" cy="62" rx="9" ry="11" fill="#FFFFFF" />
+      <circle cx="105" cy="62" r="5.5" fill="#1E293B" />
+      <circle cx="107" cy="59" r="2" fill="#FFFFFF" /> <!-- Sparkle -->
+
+      <!-- Nose -->
+      <path d="M85 66 Q90 76 83 80" stroke="#D97706" stroke-width="3" fill="none" stroke-linecap="round" />
+
+      <!-- Iconic Mustache -->
+      <path d="M52 90 Q85 80 118 90 Q102 102 85 94 Q68 102 52 90 Z" fill="#1E293B" />
+
+      <!-- Big Drooling Mouth & Tongue -->
+      <path d="M62 98 Q85 124 108 98 Q85 104 62 98 Z" fill="#7F1D1D" />
+      <ellipse cx="85" cy="110" rx="14" ry="7" fill="#F43F5E" /> <!-- Tongue -->
+      <!-- Tiny Drool Drop -->
+      <path d="M102 108 Q106 118 102 122 Q98 118 102 108 Z" fill="#60A5FA" opacity="0.9" />
+
+      <!-- Blushing Cheeks -->
+      <circle cx="45" cy="78" r="10" fill="#F87171" opacity="0.45" />
+      <circle cx="125" cy="78" r="10" fill="#F87171" opacity="0.45" />
+    </g>
+
+    <!-- Center-Right: Giant Steaming Pizza Slice -->
+    <g transform="translate(305, 120)">
+      <!-- Steam Waves -->
+      <path d="M70 -35 Q78 -55 70 -75" stroke="#FFFFFF" stroke-width="3.5" fill="none" opacity="0.4" stroke-linecap="round" />
+      <path d="M110 -30 Q118 -55 110 -80" stroke="#FFFFFF" stroke-width="3.5" fill="none" opacity="0.5" stroke-linecap="round" />
+      <path d="M150 -35 Q158 -55 150 -75" stroke="#FFFFFF" stroke-width="3" fill="none" opacity="0.35" stroke-linecap="round" />
+
+      <!-- Crust (Back Shadow) -->
+      <path d="M20 18 Q110 -15 200 18 L190 32 Q110 5 28 32 Z" fill="#92400E" />
+
+      <!-- Crust (Main Golden Baked Bread) -->
+      <path d="M20 15 Q110 -18 200 15 Q205 28 195 32 Q110 5 25 32 Q15 28 20 15 Z" fill="#D97706" stroke="#78350F" stroke-width="2.5" />
+
+      <!-- Pizza Slice Body (Melted Cheese & Sauce) -->
+      <polygon points="26,30 200,30 110,195" fill="url(#cheeseGrad)" stroke="#B45309" stroke-width="2.5" />
+
+      <!-- Molten Cheese Drips at the Tip -->
+      <path d="M96 175 Q110 220 118 185 Q126 210 134 175 Z" fill="#FBBF24" stroke="#B45309" stroke-width="2" />
+
+      <!-- Cheese Pull Elastic Strings extending left towards Binod -->
+      <path d="M30 45 Q-20 70 -65 110" stroke="#FDE047" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.9" />
+      <path d="M35 75 Q-15 95 -60 118" stroke="#FBBF24" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.8" />
+      <path d="M50 110 Q-5 125 -55 125" stroke="#FDE047" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.85" />
+
+      <!-- Toppings: Pepperoni / Tomato Slices -->
+      <ellipse cx="80" cy="65" rx="13" ry="10" fill="#DC2626" stroke="#991B1B" stroke-width="2" />
+      <circle cx="82" cy="65" r="2.5" fill="#FECACA" opacity="0.7" />
+
+      <ellipse cx="145" cy="75" rx="14" ry="11" fill="#DC2626" stroke="#991B1B" stroke-width="2" />
+      <circle cx="147" cy="75" r="2.5" fill="#FECACA" opacity="0.7" />
+
+      <ellipse cx="112" cy="120" rx="12" ry="9" fill="#DC2626" stroke="#991B1B" stroke-width="2" />
+
+      <!-- Toppings: Black Olives -->
+      <circle cx="112" cy="70" r="7" fill="#0F172A" />
+      <circle cx="112" cy="70" r="3" fill="#FBBF24" />
+
+      <circle cx="68" cy="115" r="7" fill="#0F172A" />
+      <circle cx="68" cy="115" r="3" fill="#FBBF24" />
+
+      <circle cx="150" cy="125" r="6" fill="#0F172A" />
+      <circle cx="150" cy="125" r="2.5" fill="#FBBF24" />
+
+      <!-- Toppings: Green Capsicum Strips -->
+      <path d="M90 90 Q105 82 120 95" stroke="#16A34A" stroke-width="5" fill="none" stroke-linecap="round" />
+      <path d="M50 80 Q65 72 75 88" stroke="#16A34A" stroke-width="4.5" fill="none" stroke-linecap="round" />
+      <path d="M130 100 Q142 92 152 106" stroke="#16A34A" stroke-width="4.5" fill="none" stroke-linecap="round" />
+
+      <!-- Mushrooms -->
+      <path d="M100 150 Q110 140 120 150 Z" fill="#E2E8F0" />
+      <rect x="107" y="150" width="6" height="7" fill="#CBD5E1" />
+
+      <!-- Sparkle Stars -->
+      <polygon points="175,45 178,52 185,55 178,58 175,65 172,58 165,55 172,52" fill="#FEF08A" />
+      <polygon points="65,165 67,170 72,172 67,174 65,179 63,174 58,172 63,170" fill="#FEF08A" />
+    </g>
+
+    <!-- Desi Comic Dialogue Speech Bubble (Bottom Floating) -->
+    <g transform="translate(60, 290)">
+      <rect x="0" y="0" width="430" height="72" rx="14" fill="#FFFFFF" filter="url(#shadowWelcome)" stroke="#F59E0B" stroke-width="2" />
+      <polygon points="80,-12 95,0 70,0" fill="#FFFFFF" />
+
+      <text x="20" y="28" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="900" font-size="16" fill="#14382B">
+        "Binod: Haan bhai bilkul khaenge! 🤤"
+      </text>
+      <text x="20" y="52" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="700" font-size="13.5" fill="#D97706">
+        Par shart yeh hai — Pizza TrueCafe Deoband ka hi hona chahiye! 🍕
+      </text>
+    </g>
+  </g>
+</svg>
