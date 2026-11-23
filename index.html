@@ -1453,10 +1453,10 @@
         </div>
       </div>
 
-      <!-- Separate Pyaaz / Bina Pyaaz / Bestsellers Filter Bar -->
+      <!-- Separate Pyaaz / Bina Pyaaz / Deoband Favorites Filter Bar -->
       <div class="diet-filter-row" id="dietFilterRow">
         <button type="button" class="diet-btn active" data-diet="all">✨ Sabhi Options (All)</button>
-        <button type="button" class="diet-btn" data-diet="bestseller">⭐ Bestsellers</button>
+        <button type="button" class="diet-btn" data-diet="bestseller">⭐ Deoband Favorites</button>
         <button type="button" class="diet-btn" data-diet="noonion">🚫🧅 Bina Pyaaz (No Onion)</button>
         <button type="button" class="diet-btn" data-diet="onion">🧅 Pyaaz Wale (With Onion)</button>
       </div>
@@ -2016,7 +2016,7 @@
         
         let label = cat;
         if (cat === 'All') label = t('allCategory');
-        else if (cat === 'Bestsellers') label = '⭐ Bestsellers';
+        else if (cat === 'Bestsellers' || cat === 'Favorites') label = '⭐ Deoband Favorites';
         else if (cat.includes('Pizza')) label = '🍕 Pizzas';
         else if (cat.includes('Burger')) label = '🍔 Burgers';
         else if (cat.includes('Chowmein') || cat.includes('Noodles')) label = '🍜 Chowmein';
@@ -2028,7 +2028,7 @@
         btn.textContent = label;
         btn.addEventListener('click', () => {
           activeCategory = cat;
-          if (cat === 'Bestsellers') {
+          if (cat === 'Bestsellers' || cat === 'Favorites') {
             dietFilter = 'bestseller';
             document.querySelectorAll('#dietFilterRow .diet-btn').forEach(b => {
               b.classList.toggle('active', b.dataset.diet === 'bestseller');
@@ -2073,17 +2073,17 @@
     }
 
     function groupByCategory(items) {
-      if (activeCategory === 'Bestsellers' || dietFilter === 'bestseller') {
+      if (activeCategory === 'Bestsellers' || activeCategory === 'Favorites' || dietFilter === 'bestseller') {
         const bests = items.filter(i => i.bestseller);
-        return { '⭐ Top Bestsellers': bests.length ? bests : items };
+        return { '⭐ Deoband Favorites': bests.length ? bests : items };
       }
       const groups = {};
 
-      // If viewing all dishes (default view), feature the Top Bestsellers right at the top!
+      // If viewing all dishes (default view), feature Deoband Favorites right at the top!
       if (activeCategory === 'All' && !searchQuery.trim() && dietFilter === 'all') {
         const bestsellers = items.filter(i => i.bestseller);
         if (bestsellers.length > 0) {
-          groups['⭐ Top Bestsellers'] = bestsellers;
+          groups['⭐ Deoband Favorites'] = bestsellers;
         }
       }
 
@@ -2097,7 +2097,7 @@
     }
 
     const SECTION_THEMES = {
-      '⭐ Top Bestsellers': { icon: '⭐', color: '#F59E0B', border: '#F59E0B', bg: '#FEF3C7', text: '#92400E', tag: 'Deoband Favs' },
+      '⭐ Deoband Favorites': { icon: '⭐', color: '#F59E0B', border: '#F59E0B', bg: '#FEF3C7', text: '#92400E', tag: 'Most Loved' },
       'Pizzas': { icon: '🍕', color: '#EF4444', border: '#EF4444', bg: '#FEE2E2', text: '#991B1B', tag: 'Hand-Tossed' },
       'Burgers': { icon: '🍔', color: '#F97316', border: '#F97316', bg: '#FFEDD5', text: '#9A3412', tag: 'Full Size Only' },
       'Chowmein & Noodles': { icon: '🍜', color: '#D97706', border: '#D97706', bg: '#FEF3C7', text: '#92400E', tag: 'Desi Wok' },
@@ -2127,7 +2127,7 @@
         const section = document.createElement('section');
         const theme = SECTION_THEMES[category] || { icon: '🍽️', color: 'var(--accent-amber)', border: 'var(--accent-amber)', bg: 'var(--accent-surface)', text: 'var(--text)', tag: 'Special' };
 
-        const isBestsellerSection = category.includes('Bestseller');
+        const isBestsellerSection = category.includes('Deoband') || category.includes('Bestseller') || category.includes('Favorite');
         section.className = isBestsellerSection ? 'menu-category-section sec-bestsellers-highlight' : 'menu-category-section';
 
         const cleanName = category.replace(/^⭐\s*/, '');
@@ -2186,11 +2186,11 @@
 
       let cornerTagHtml = '';
       if (item.bestseller) {
-        cornerTagHtml = `<span class="bestseller-corner-tag">⭐ BESTSELLER</span>`;
+        cornerTagHtml = `<span class="bestseller-corner-tag">⭐ DEOBAND FAVORITE</span>`;
       }
 
       let badgesHtml = '';
-      if (item.bestseller) badgesHtml += `<span class="badge-bestseller">★ Best Choice</span>`;
+      if (item.bestseller) badgesHtml += `<span class="badge-bestseller">⭐ Deoband Fav</span>`;
       if (item.hasOnion) {
         badgesHtml += `<span class="badge-onion" title="Contains Onion">🧅 Pyaaz</span>`;
       } else {
@@ -2499,7 +2499,7 @@
 
     gpsBtn.addEventListener('click', () => {
       if (!navigator.geolocation) {
-        alert('GPS not supported in browser.');
+        showToast('GPS is browser me supported nahi hai.', '📍');
         return;
       }
       gpsLabel.textContent = 'Locating GPS...';
@@ -2509,9 +2509,12 @@
           const lng = pos.coords.longitude.toFixed(6);
           gpsVal.value = `https://maps.google.com/?q=${lat},${lng}`;
           gpsLabel.textContent = t('gpsDone');
-          showToast('GPS Pin Attached', '📍');
+          showToast('GPS Pin lag gaya! ✓', '📍');
         },
-        () => { gpsLabel.textContent = 'GPS failed, type address.'; },
+        () => {
+          gpsLabel.textContent = 'GPS failed, type address.';
+          showToast('GPS permission nahi mili. Address manually likhein.', '📍');
+        },
         { enableHighAccuracy: true, timeout: 6000 }
       );
     });
@@ -2531,7 +2534,7 @@
 
       // ₹100 Minimum order cap validation
       if (subtotal < MIN_ORDER_CAP) {
-        alert(`Minimum order value ₹${MIN_ORDER_CAP} hona chahiye. Kripya ₹${MIN_ORDER_CAP - subtotal} aur add karein.`);
+        showToast(`Minimum order ₹${MIN_ORDER_CAP} hai! ₹${MIN_ORDER_CAP - subtotal} aur add karein.`, '⚠️');
         return;
       }
 
@@ -2540,6 +2543,12 @@
       const table = tableNo.value.trim();
       const notes = orderNotes.value.trim();
       const gps = gpsVal.value.trim();
+
+      if (deliveryMode === 'delivery' && !address) {
+        showToast('Kripya delivery address enter karein!', '📍');
+        custAddress.focus();
+        return;
+      }
 
       try {
         localStorage.setItem(CUST_STORAGE_KEY, JSON.stringify({ name, address }));
@@ -2709,7 +2718,7 @@
     // Welcome Memes Pool (Live Dynamic Updates)
     const WELCOME_MEMES = [
       {
-        badge: "🍕 DEOBAND SPECIAL MEME",
+        badge: "🍕 DEOBAND FAVORITE SPECIAL",
         title: "Pizza khaega kya Binod? 🍕",
         punchline: "Dekh raha hai na Binod... kaise fresh hand-tossed base pe extra mozzarella melt ho rahi hai!",
         sub: "Roz wahi daal-roti se bore ho gaye? Ek click mein mast pizza order lagao! 🚀"
@@ -2727,13 +2736,13 @@
         sub: "WhatsApp pe direct order jata hai — zero bicholiya, instant confirmation!"
       },
       {
-        badge: "🚫🧅 JAIN & BINA PYAAR SPECIAL",
+        badge: "🚫🧅 JAIN & BINA PYAAZ SPECIAL",
         title: "Bina Pyaaz-Lehsun ka milega Binod? 🧅❌",
         punchline: "Haan bhai 100% shuddh Jain & Bina Pyaaz wale pizza bhi ekdum kadak available hain!",
         sub: "Menu mein 'Bina Pyaaz' filter dabao aur befikr enjoy karo!"
       },
       {
-        badge: "🔥 MEME OF THE MOMENT",
+        badge: "🔥 DEOBAND FAVORITE MEME",
         title: "Control Majnu bhai control... Pehle Pizza aane do! 🍕",
         punchline: "Panchayat baad mein hogi, pehle ₹100 ki minimum deal ka full maza uthao!",
         sub: "TrueCafe Deoband: Swaad aisa jo Binod ko bhi hamesha yaad rahe!"
@@ -2797,6 +2806,7 @@
       if (!modal) return;
       setWelcomeMeme(welcomeMemeIdx);
       modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
       startWelcomeLiveTimer();
     }
 
@@ -2804,6 +2814,7 @@
       const modal = document.getElementById('welcomeModal');
       if (!modal) return;
       modal.classList.remove('open');
+      document.body.style.overflow = '';
       stopWelcomeLiveTimer();
     }
 
@@ -2841,6 +2852,15 @@
         openWelcomeModal();
       }, 600);
     }
+
+    // Global ESC key handler for modals
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+        closeMemePopup();
+        closeWelcomeModal();
+      }
+    });
 
     document.addEventListener('DOMContentLoaded', () => {
       initTheme();
