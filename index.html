@@ -945,6 +945,104 @@
     }
 
     .toast-pill.show { transform: translateX(-50%) translateY(0); }
+
+    /* Meme Badges & Success Modal */
+    .badge-meme {
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FCD34D;
+      font-size: 0.63rem;
+      font-weight: 800;
+      padding: 1px 7px;
+      border-radius: var(--radius-full);
+      white-space: nowrap;
+    }
+    [data-theme="dark"] .badge-meme {
+      background: #451A03;
+      color: #FDE68A;
+      border-color: #78350F;
+    }
+
+    .meme-art-wrap {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+    .meme-success-img {
+      width: 100%;
+      height: auto;
+      max-height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+    .meme-success-card {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      text-align: center;
+    }
+    .meme-success-badge {
+      display: inline-block;
+      background: var(--accent-surface);
+      color: var(--accent-amber);
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 2px 10px;
+      border-radius: var(--radius-full);
+      margin-bottom: 8px;
+      letter-spacing: 0.03em;
+    }
+    .meme-success-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .meme-success-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin-bottom: 10px;
+    }
+    .meme-order-meta {
+      background: var(--surface);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius-sm);
+      padding: 8px;
+      font-size: 0.78rem;
+      color: var(--text);
+      font-weight: 700;
+    }
+    .btn-primary-action {
+      border: none;
+      border-radius: var(--radius-full);
+      padding: 12px 18px;
+      font-size: 0.88rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-primary-action:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+    }
+    .btn-secondary-action {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: var(--radius-full);
+      padding: 10px 16px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-secondary-action:hover {
+      background: var(--surface-hover);
+    }
   </style>
 </head>
 <body>
@@ -1133,6 +1231,46 @@
     </div>
   </div>
 
+  <!-- Meme Order Placed Success Modal -->
+  <div class="modal-backdrop" id="memeSuccessModal" style="z-index: 120;">
+    <div class="drawer-modal" role="dialog" aria-modal="true" style="max-height: 92vh; max-width: 540px; margin: auto;">
+      <div class="drawer-head" style="background: var(--brand-green); color: #fff;">
+        <h3 style="color:#fff;"><span>🎉</span> <span>Order Placed Successfully!</span></h3>
+        <button type="button" class="btn-close" id="closeMemeModal" style="color:#fff;">✕</button>
+      </div>
+
+      <div class="drawer-content" style="padding: 16px;">
+        <!-- Meme Graphic Illustration -->
+        <div class="meme-art-wrap">
+          <img src="images/meme_order_success.svg" alt="Dekh Raha Hai Na Binod Meme" class="meme-success-img">
+        </div>
+
+        <div class="meme-success-card">
+          <span class="meme-success-badge">🔥 RASOI MEIN AAG LAG CHUKI HAI</span>
+          <h4 class="meme-success-title">"Dekh raha hai na Binod... Order WhatsApp pe lag gaya!"</h4>
+          <p class="meme-success-desc">
+            Aapka mast garma-garam order kitchen ko receive ho chuka hai. <strong>25–35 minute</strong> mein delivery partner aapki bell bajayega!
+          </p>
+          <div class="meme-order-meta" id="memeOrderMeta">
+            Order Process Ho Raha Hai...
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 14px;">
+          <a id="memeWaLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-primary-action" style="background: #25D366; color: #fff; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.34C9.33 7.34 9 7.42 8.76 7.68C8.52 7.94 7.86 8.56 7.86 9.83C7.86 11.1 8.79 12.32 8.92 12.5C9.05 12.67 10.74 15.28 13.33 16.39C13.95 16.66 14.43 16.82 14.81 16.94C15.43 17.14 15.99 17.11 16.44 17.04C16.94 16.97 17.98 16.41 18.2 15.79C18.42 15.17 18.42 14.64 18.35 14.53C18.28 14.42 18.11 14.36 17.85 14.23C17.59 14.1 16.32 13.47 16.08 13.39C15.85 13.3 15.68 13.26 15.51 13.52C15.34 13.78 14.85 14.36 14.7 14.53C14.55 14.7 14.4 14.72 14.14 14.59C13.88 14.46 13.04 14.18 12.04 13.29C11.26 12.59 10.73 11.73 10.6 11.47C10.47 11.21 10.59 11.07 10.72 10.94C10.84 10.82 10.99 10.63 11.12 10.47C11.25 10.31 11.29 10.2 11.38 10.03C11.47 9.86 11.42 9.71 11.36 9.58C11.3 9.45 10.8 8.24 10.6 7.74C10.4 7.24 10.2 7.31 10.05 7.31C9.9 7.31 9.72 7.34 9.53 7.34Z"/>
+            </svg>
+            <span>💬 WhatsApp Chat Kholo</span>
+          </a>
+          <button type="button" class="btn-secondary-action" id="btnDoneOrder">
+            🍔 Ek Aur Order Lagana Hai
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Micro Toast -->
   <div class="toast-pill" id="toast">
     <span id="toastIco">✨</span>
@@ -1270,7 +1408,7 @@
       { id: "b1", name: "Mix Veg Tikki Burger", category: "Burgers", description: "Crispy veg patty, shredded lettuce, house mayo", price: 80, hasHalf: false, halfPrice: null, isVeg: true, jainFriendly: false, bestseller: false, image: "images/burger.png", available: true },
       { id: "b2", name: "Cheese Burger", category: "Burgers", description: "Herb potato patty, cheddar slice, gherkins", price: 100, hasHalf: false, halfPrice: null, isVeg: true, jainFriendly: false, bestseller: false, image: "images/burger.png", available: true },
       { id: "b3", name: "Tandoori Cheese Burger", category: "Burgers", description: "Paneer patty, cheddar cheese, tandoori relish", price: 130, hasHalf: false, halfPrice: null, isVeg: true, jainFriendly: false, bestseller: true, image: "images/burger.png", available: true },
-      { id: "b4", name: "Maharaja Burger", category: "Burgers", description: "Double patty, double cheddar, jalapeños", price: 190, hasHalf: true, halfPrice: 115, isVeg: true, jainFriendly: false, bestseller: true, image: "images/burger.png", available: true },
+      { id: "b4", name: "Maharaja Burger", category: "Burgers", description: "Double patty, double cheddar, jalapeños", price: 190, hasHalf: false, halfPrice: null, memeTag: "Aadha burger kya hota hai Binod? Poora khao!", memeImage: "images/meme_burger.svg", isVeg: true, jainFriendly: false, bestseller: true, image: "images/burger.png", available: true },
       { id: "s1", name: "Cheese Garlic Bread", category: "Bakery & Sides", description: "Roasted garlic butter, mozzarella, toasted bread", price: 140, hasHalf: true, halfPrice: 85, isVeg: true, jainFriendly: false, bestseller: true, image: "images/healthy.png", available: true },
       { id: "d1", name: "Choco Lava Cake", category: "Desserts", description: "Dark chocolate, cocoa sponge, molten core", price: 90, hasHalf: false, halfPrice: null, isVeg: true, jainFriendly: true, bestseller: true, image: "images/desserts.png", available: true },
       { id: "bv1", name: "Cold Coffee", category: "Beverages & Shakes", description: "Espresso shot, chilled dairy, dark chocolate", price: 119, hasHalf: false, halfPrice: null, isVeg: true, jainFriendly: true, bestseller: true, image: "images/healthy.png", available: true },
@@ -1433,6 +1571,9 @@
           const d = DEFAULT_MENU.find(x => x.id === item.id);
           if (d && d.sizes) return { ...item, sizes: d.sizes };
         }
+        if (item.category === 'Burgers') {
+          return { ...item, hasHalf: false, halfPrice: null };
+        }
         return item;
       });
       menuItems.forEach((i, idx) => { if (!i.id) i.id = 'tc-' + idx; });
@@ -1520,6 +1661,20 @@
         `;
         section.appendChild(title);
 
+        if (category === 'Burgers') {
+          const memeBanner = document.createElement('div');
+          memeBanner.innerHTML = `
+            <div style="background: var(--surface-subtle); border: 1px dashed var(--accent-amber); border-radius: var(--radius-md); padding: 8px 12px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.6rem;">🍔</span>
+              <div style="flex: 1;">
+                <div style="font-size: 0.7rem; font-weight: 800; color: var(--accent-amber); text-transform: uppercase;">Meme Rule • Binod Special</div>
+                <div style="font-size: 0.78rem; font-weight: 700; color: var(--text);">"Aadha burger kya hota hai Binod? Dosti me hissa chalega, burger me nahi!" 👑</div>
+              </div>
+            </div>
+          `;
+          section.appendChild(memeBanner);
+        }
+
         const grid = document.createElement('div');
         grid.className = 'items-grid';
 
@@ -1546,6 +1701,7 @@
       let badgesHtml = '';
       if (item.bestseller) badgesHtml += `<span class="badge-bestseller">★ Best</span>`;
       if (item.jainFriendly) badgesHtml += `<span class="badge-jain">🌾 Jain</span>`;
+      if (item.category === 'Burgers') badgesHtml += `<span class="badge-meme" title="Burger Meme">👑 Full Burger</span>`;
 
       const imgHtml = item.image ? `
         <img 
@@ -1585,6 +1741,15 @@
       const pInfo = getItemPortionInfo(item, activePortion);
       const currentPrice = pInfo.price;
 
+      let descHtml = '';
+      if (item.description) {
+        descHtml = `<p class="dish-desc"><span class="ing-tag">Ingredients:</span> ${item.description}`;
+        if (item.memeTag) {
+          descHtml += `<span style="display:block; margin-top:2px; color:var(--accent-amber); font-weight:700;">😂 "${item.memeTag}"</span>`;
+        }
+        descHtml += `</p>`;
+      }
+
       card.innerHTML = `
         <div class="dish-info">
           <div class="dish-top-row">
@@ -1593,7 +1758,7 @@
           </div>
           <h4 class="dish-title">${item.name}</h4>
           ${portionHtml ? portionHtml : `<span class="dish-price">${formatINR(currentPrice)}</span>`}
-          ${item.description ? `<p class="dish-desc"><span class="ing-tag">Ingredients:</span> ${item.description}</p>` : ''}
+          ${descHtml}
         </div>
         <div class="dish-action-wrap">
           ${imgHtml}
@@ -1933,8 +2098,52 @@
       lines.push("_Bhaiya order confirm kardo aur kitna time lagega bata do. Shukriya!_");
 
       const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`;
+
+      // Close checkout drawer
+      closeModal();
+
+      // Show Order Placed Success Meme Modal
+      const memeSuccessModal = document.getElementById('memeSuccessModal');
+      const memeOrderMeta = document.getElementById('memeOrderMeta');
+      const memeWaLink = document.getElementById('memeWaLink');
+
+      memeOrderMeta.innerHTML = `
+        <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+          <span>👤 ${name}</span>
+          <span style="color:var(--brand-green); font-weight:800;">${formatINR(grandTotal)}</span>
+        </div>
+        <div style="font-size:0.75rem; color:var(--text-muted);">
+          ${deliveryMode === 'delivery' ? '🛵 Ghar Pe Delivery' : '🍽️ Dine-In / Takeaway'} • ${paymentMode === 'upi' ? 'UPI' : 'Cash on Delivery'}
+        </div>
+      `;
+      memeWaLink.href = waUrl;
+
+      // Open WhatsApp in new tab & show celebratory meme modal
       window.open(waUrl, '_blank', 'noopener,noreferrer');
-      showToast('Opening WhatsApp...', '🚀');
+      memeSuccessModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      showToast('Order lag gaya Binod! 🎉', '🚀');
+    });
+
+    const memeSuccessModal = document.getElementById('memeSuccessModal');
+    const closeMemeModal = document.getElementById('closeMemeModal');
+    const btnDoneOrder = document.getElementById('btnDoneOrder');
+
+    function closeMemePopup() {
+      memeSuccessModal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    closeMemeModal.addEventListener('click', closeMemePopup);
+    memeSuccessModal.addEventListener('click', (e) => {
+      if (e.target === memeSuccessModal) closeMemePopup();
+    });
+    btnDoneOrder.addEventListener('click', () => {
+      cart.clear();
+      updateCartState();
+      renderMenu();
+      closeMemePopup();
+      showToast('Naya order shuru karein!', '🍕');
     });
 
     searchInput.addEventListener('input', (e) => {

@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14382B" />
+      <stop offset="100%" stop-color="#091A13" />
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97736" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="600" height="420" rx="20" fill="url(#bgGrad)" />
+
+  <!-- Decorative Pattern Rings -->
+  <circle cx="530" cy="70" r="100" fill="#235240" opacity="0.25" />
+  <circle cx="70" cy="360" r="130" fill="#D97736" opacity="0.12" />
+
+  <!-- Main Comic Card -->
+  <g transform="translate(30, 25)">
+    <!-- Top Meme Banner Tag -->
+    <rect x="0" y="0" width="540" height="44" rx="10" fill="url(#amberGrad)" />
+    <text x="270" y="28" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="900" font-size="19" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">
+      🔥 DEKH RAHA HAI NA BINOD? ORDER LAG GAYA! 🎉
+    </text>
+
+    <!-- Character Panel Container -->
+    <rect x="0" y="56" width="540" height="314" rx="14" fill="#1C2D24" stroke="#2B4739" stroke-width="2" />
+
+    <!-- Binod Cartoon Avatar Illustration -->
+    <!-- Head & Body -->
+    <g transform="translate(55, 95)">
+      <!-- Gamcha / Scarf on shoulder -->
+      <path d="M-15 150 Q20 120 70 120 Q120 120 155 150 L140 185 L0 185 Z" fill="#EF4444" />
+      <path d="M-5 130 Q70 100 145 130" stroke="#FDE047" stroke-width="6" fill="none" stroke-linecap="round" />
+      
+      <!-- Kurta / Shirt -->
+      <path d="M5 140 Q70 130 135 140 L150 200 L-10 200 Z" fill="#F3F4F6" />
+
+      <!-- Neck -->
+      <rect x="52" y="90" width="36" height="30" rx="8" fill="#FBBF24" />
+
+      <!-- Face -->
+      <ellipse cx="70" cy="65" rx="46" ry="50" fill="#FCD34D" />
+
+      <!-- Hair & Mustache -->
+      <path d="M26 45 Q70 5 114 45 Q105 20 70 20 Q35 20 26 45 Z" fill="#1F2937" />
+      <!-- Mustache (Iconic Binod / Desi Style) -->
+      <path d="M42 82 Q70 74 98 82 Q85 92 70 85 Q55 92 42 82 Z" fill="#1F2937" />
+      
+      <!-- Big Happy Grin -->
+      <path d="M50 90 Q70 108 90 90" stroke="#B91C1C" stroke-width="4" fill="#FFFFFF" stroke-linecap="round" />
+
+      <!-- Eyes & Eyebrows -->
+      <!-- Left Eye -->
+      <ellipse cx="50" cy="56" rx="6" ry="7" fill="#FFFFFF" />
+      <circle cx="52" cy="56" r="3.5" fill="#1F2937" />
+      <path d="M40 46 Q52 40 60 48" stroke="#1F2937" stroke-width="3" fill="none" stroke-linecap="round" />
+
+      <!-- Right Eye (Winking happily) -->
+      <path d="M80 57 Q90 50 100 57" stroke="#1F2937" stroke-width="4" fill="none" stroke-linecap="round" />
+      <path d="M78 46 Q90 40 100 48" stroke="#1F2937" stroke-width="3" fill="none" stroke-linecap="round" />
+
+      <!-- Cheeks blushing -->
+      <circle cx="36" cy="70" r="9" fill="#F87171" opacity="0.5" />
+      <circle cx="104" cy="70" r="9" fill="#F87171" opacity="0.5" />
+
+      <!-- Hands holding Pizza Slice -->
+      <g transform="translate(100, 115) rotate(-15)">
+        <polygon points="10,0 70,30 20,70" fill="#F59E0B" stroke="#B45309" stroke-width="3" />
+        <circle cx="35" cy="35" r="6" fill="#DC2626" />
+        <circle cx="45" cy="22" r="5" fill="#DC2626" />
+        <path d="M10 0 Q40 -5 70 30" stroke="#78350F" stroke-width="8" fill="none" stroke-linecap="round" />
+      </g>
+    </g>
+
+    <!-- Comic Speech Bubble on the right -->
+    <g transform="translate(230, 75)">
+      <!-- Bubble background -->
+      <rect x="0" y="0" width="285" height="175" rx="18" fill="#FFFFFF" filter="url(#cardShadow)" />
+      <!-- Tail pointing to Binod -->
+      <polygon points="0,50 -20,65 0,80" fill="#FFFFFF" />
+
+      <!-- Bubble Text -->
+      <text x="20" y="36" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="800" font-size="16" fill="#14382B">
+        "Dekh raha hai na Binod...
+      </text>
+      <text x="20" y="62" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="900" font-size="18" fill="#D97736">
+        WhatsApp pe order lag gaya!
+      </text>
+      <text x="20" y="94" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="600" font-size="13.5" fill="#374151">
+        Ab chulha jal chuka hai,
+      </text>
+      <text x="20" y="116" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="600" font-size="13.5" fill="#374151">
+        garma-garam khana ban raha hai! 🤤
+      </text>
+      <text x="20" y="148" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="800" font-size="14" fill="#059669">
+        🛵 25-35 Min mein darwaze pe! ✓
+      </text>
+    </g>
+
+    <!-- Bottom Punchline Bar -->
+    <g transform="translate(20, 275)">
+      <rect x="0" y="0" width="500" height="75" rx="12" fill="#13241C" stroke="#233E30" stroke-width="1.5" />
+      <text x="250" y="32" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="800" font-size="15" fill="#FCD34D" text-anchor="middle">
+        😂 "Ruk jaa bhai, kursi ki peti baandh lo... Swad aa raha hai!"
+      </text>
+      <text x="250" y="56" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="600" font-size="12.5" fill="#9CA3AF" text-anchor="middle">
+        TrueCafe Deoband • Seedha WhatsApp Kitchen Connect
+      </text>
+    </g>
+  </g>
+</svg>
