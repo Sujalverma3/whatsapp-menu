@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="comboBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E1B4B" />
+      <stop offset="60%" stop-color="#312E81" />
+      <stop offset="100%" stop-color="#1E1B4B" />
+    </linearGradient>
+    <linearGradient id="badgeSaveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626" />
+      <stop offset="50%" stop-color="#EA580C" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+    <filter id="comboShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#comboBg)"/>
+  <circle cx="200" cy="180" r="140" fill="#8B5CF6" opacity="0.25" filter="blur(25px)"/>
+
+  <!-- Top Savings Banner -->
+  <g transform="translate(50, 16)">
+    <rect x="0" y="0" width="300" height="38" rx="19" fill="url(#badgeSaveGrad)"/>
+    <text x="150" y="24" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="900" font-size="14" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.8">
+      🔥 VALUE MEAL • SAVE UP TO ₹120!
+    </text>
+  </g>
+
+  <!-- Left: Burger -->
+  <g transform="translate(60, 120)" filter="url(#comboShadow)">
+    <!-- Top Bun -->
+    <path d="M10 50 Q65 10 120 50 L120 60 L10 60 Z" fill="#D97706" stroke="#92400E" stroke-width="2"/>
+    <ellipse cx="65" cy="50" rx="55" ry="10" fill="#FBBF24" opacity="0.4"/>
+    <!-- Sesame Seeds -->
+    <circle cx="45" cy="35" r="2" fill="#FEF3C7"/>
+    <circle cx="65" cy="25" r="2.5" fill="#FEF3C7"/>
+    <circle cx="85" cy="35" r="2" fill="#FEF3C7"/>
+
+    <!-- Lettuce -->
+    <path d="M5 60 Q20 72 35 60 Q50 72 65 60 Q80 72 95 60 Q110 72 125 60 L120 68 L10 68 Z" fill="#16A34A"/>
+
+    <!-- Cheese Slice with Corner Melt -->
+    <polygon points="10,68 120,68 125,78 65,92 5,78" fill="#FACC15"/>
+
+    <!-- Veg Tikki / Patty -->
+    <rect x="10" y="76" width="110" height="22" rx="8" fill="#78350F" stroke="#451A03" stroke-width="1.5"/>
+
+    <!-- Bottom Bun -->
+    <path d="M12 96 L118 96 Q115 118 65 118 Q15 118 12 96 Z" fill="#D97706" stroke="#92400E" stroke-width="2"/>
+  </g>
+
+  <!-- Center: French Fries Pack -->
+  <g transform="translate(175, 110)" filter="url(#comboShadow)">
+    <!-- Fries Box (Red) -->
+    <polygon points="15,65 75,65 68,140 22,140" fill="#DC2626" stroke="#991B1B" stroke-width="2"/>
+    <path d="M22 65 Q45 80 68 65" fill="#B91C1C"/>
+
+    <!-- Gold "M" Logo Arch -->
+    <path d="M36 100 Q45 80 54 100" stroke="#FDE047" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+    <!-- Crispy Golden Fries Sticking Out -->
+    <rect x="22" y="15" width="8" height="55" rx="3" fill="#FBBF24" stroke="#D97706" stroke-width="1" transform="rotate(-12 26 40)"/>
+    <rect x="34" y="8" width="9" height="60" rx="3" fill="#FDE047" stroke="#D97706" stroke-width="1" transform="rotate(-5 38 35)"/>
+    <rect x="47" y="10" width="8" height="58" rx="3" fill="#FBBF24" stroke="#D97706" stroke-width="1" transform="rotate(6 51 38)"/>
+    <rect x="58" y="20" width="8" height="50" rx="3" fill="#FDE047" stroke="#D97706" stroke-width="1" transform="rotate(15 62 45)"/>
+  </g>
+
+  <!-- Right: Chilled Drink Cup with Straw -->
+  <g transform="translate(255, 95)" filter="url(#comboShadow)">
+    <!-- Cup Body -->
+    <polygon points="12,50 68,50 60,155 20,155" fill="#EF4444" stroke="#991B1B" stroke-width="2"/>
+    <!-- Logo Wave on Cup -->
+    <path d="M18 100 Q40 85 62 100" stroke="#FFFFFF" stroke-width="4" fill="none"/>
+
+    <!-- Cup Lid -->
+    <ellipse cx="40" cy="50" rx="30" ry="8" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="2"/>
+
+    <!-- Straw -->
+    <line x1="40" y1="50" x2="52" y2="10" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+    <line x1="52" y1="10" x2="68" y2="-5" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+    <line x1="40" y1="50" x2="68" y2="-5" stroke="#DC2626" stroke-width="6" stroke-dasharray="6,6" stroke-linecap="round"/>
+  </g>
+
+  <!-- Bottom Tag Pill -->
+  <g transform="translate(90, 345)">
+    <rect x="0" y="0" width="220" height="34" rx="17" fill="#EDE9FE" stroke="#8B5CF6" stroke-width="1.5"/>
+    <text x="110" y="22" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="900" font-size="13" fill="#5B21B6" text-anchor="middle" letter-spacing="0.5">
+      🎁 FULL FEAST VALUE COMBO
+    </text>
+  </g>
+</svg>

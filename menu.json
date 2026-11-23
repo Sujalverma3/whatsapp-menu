@@ -238,8 +238,10 @@
     "isVeg": true,
     "jainFriendly": false,
     "bestseller": true,
-    "image": "images/burger.png",
-    "available": true
+    "image": "images/value_combo.svg",
+    "available": true,
+    "originalPrice": 249,
+    "savings": 80
   },
   {
     "id": "cb2",
@@ -253,8 +255,10 @@
     "isVeg": true,
     "jainFriendly": false,
     "bestseller": true,
-    "image": "images/chinese.png",
-    "available": true
+    "image": "images/value_combo.svg",
+    "available": true,
+    "originalPrice": 239,
+    "savings": 80
   },
   {
     "id": "cb3",
@@ -268,8 +272,10 @@
     "isVeg": true,
     "jainFriendly": true,
     "bestseller": true,
-    "image": "images/pizza.png",
-    "available": true
+    "image": "images/value_combo.svg",
+    "available": true,
+    "originalPrice": 389,
+    "savings": 100
   },
   {
     "id": "cb4",
@@ -283,8 +289,10 @@
     "isVeg": true,
     "jainFriendly": false,
     "bestseller": true,
-    "image": "images/healthy.png",
-    "available": true
+    "image": "images/value_combo.svg",
+    "available": true,
+    "originalPrice": 269,
+    "savings": 70
   },
   {
     "id": "s1",
@@ -298,7 +306,7 @@
     "isVeg": true,
     "jainFriendly": false,
     "bestseller": true,
-    "image": "images/healthy.png",
+    "image": "images/garlic_bread.svg",
     "available": true
   },
   {
@@ -328,7 +336,7 @@
     "isVeg": true,
     "jainFriendly": true,
     "bestseller": true,
-    "image": "images/healthy.png",
+    "image": "images/shake_coffee.svg",
     "available": true
   },
   {
@@ -343,7 +351,7 @@
     "isVeg": true,
     "jainFriendly": true,
     "bestseller": true,
-    "image": "images/healthy.png",
+    "image": "images/shake_coffee.svg",
     "available": true
   },
   {
@@ -358,7 +366,7 @@
     "isVeg": true,
     "jainFriendly": true,
     "bestseller": false,
-    "image": "images/healthy.png",
+    "image": "images/shake_coffee.svg",
     "available": true
   },
   {
@@ -373,7 +381,7 @@
     "isVeg": true,
     "jainFriendly": true,
     "bestseller": false,
-    "image": "images/healthy.png",
+    "image": "images/shake_coffee.svg",
     "available": true
   },
   {
@@ -388,7 +396,7 @@
     "isVeg": true,
     "jainFriendly": true,
     "bestseller": false,
-    "image": "images/healthy.png",
+    "image": "images/shake_coffee.svg",
     "available": true
   },
   {
@@ -403,7 +411,7 @@
     "isVeg": true,
     "jainFriendly": true,
     "bestseller": false,
-    "image": "images/healthy.png",
+    "image": "images/shake_coffee.svg",
     "available": true
   },
   {
@@ -418,7 +426,7 @@
     "isVeg": true,
     "jainFriendly": true,
     "bestseller": false,
-    "image": "images/healthy.png",
+    "image": "images/mojito_soda.svg",
     "available": true
   },
   {
@@ -433,7 +441,7 @@
     "isVeg": true,
     "jainFriendly": true,
     "bestseller": false,
-    "image": "images/healthy.png",
+    "image": "images/mojito_soda.svg",
     "available": true
   },
   {
@@ -448,7 +456,7 @@
     "isVeg": true,
     "jainFriendly": true,
     "bestseller": false,
-    "image": "images/healthy.png",
+    "image": "images/mojito_soda.svg",
     "available": true
   }
 ]

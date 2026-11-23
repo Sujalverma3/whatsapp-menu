@@ -1393,6 +1393,217 @@
       filter: brightness(1.08);
       transform: scale(1.02);
     }
+
+    /* Original Price & Savings Badges */
+    .orig-price {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+      margin-right: 4px;
+      font-weight: 600;
+    }
+    .badge-saving {
+      background: linear-gradient(135deg, #DC2626 0%, #EA580C 100%);
+      color: #FFFFFF;
+      font-size: 0.62rem;
+      font-weight: 900;
+      padding: 2px 7px;
+      border-radius: var(--radius-full);
+      box-shadow: 0 1px 4px rgba(220, 38, 38, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      letter-spacing: 0.02em;
+    }
+
+    /* Bumper Savings Value Meal Spotlight Banner */
+    .value-savings-banner {
+      background: linear-gradient(135deg, #1E1B4B 0%, #312E81 50%, #4338CA 100%);
+      border: 1.5px solid #8B5CF6;
+      border-radius: var(--radius-lg);
+      padding: 14px 16px;
+      margin-bottom: 20px;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      box-shadow: 0 6px 20px rgba(49, 46, 129, 0.28);
+    }
+    .value-savings-content {
+      flex: 1;
+      min-width: 0;
+    }
+    .value-savings-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: linear-gradient(135deg, #DC2626 0%, #EA580C 100%);
+      color: #FFFFFF;
+      font-size: 0.65rem;
+      font-weight: 900;
+      padding: 2px 9px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 5px;
+    }
+    .value-savings-title {
+      font-size: 1rem;
+      font-weight: 800;
+      line-height: 1.25;
+      color: #FFFFFF;
+    }
+    .value-savings-desc {
+      font-size: 0.77rem;
+      color: #C7D2FE;
+      margin-top: 3px;
+      line-height: 1.35;
+    }
+    .value-savings-btn {
+      background: linear-gradient(135deg, #F59E0B 0%, #EA580C 100%);
+      color: #FFFFFF;
+      border: none;
+      border-radius: var(--radius-full);
+      padding: 9px 15px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      cursor: pointer;
+      white-space: nowrap;
+      box-shadow: 0 3px 10px rgba(245, 158, 11, 0.35);
+      transition: all 0.15s;
+    }
+    .value-savings-btn:hover {
+      filter: brightness(1.1);
+      transform: scale(1.02);
+    }
+
+    /* Smart Meal Suggestion at Checkout Time */
+    .suggest-meal-box {
+      background: var(--surface-subtle);
+      border: 1px dashed var(--accent-amber);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+    .suggest-head {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-bottom: 8px;
+    }
+    .suggest-badge {
+      font-size: 0.62rem;
+      font-weight: 900;
+      color: var(--accent-amber);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .suggest-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .suggest-items-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 4px;
+    }
+    .suggest-items-row::-webkit-scrollbar { display: none; }
+    .suggest-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      min-width: 175px;
+      flex-shrink: 0;
+    }
+    .suggest-card-info {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .suggest-card-name {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 80px;
+    }
+    .suggest-card-price {
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: var(--brand-green);
+    }
+    .suggest-card-btn {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      color: var(--accent-amber);
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 5px 9px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .suggest-card-btn:hover {
+      background: var(--accent-amber);
+      color: #FFFFFF;
+    }
+
+    /* Mobile Optimizations */
+    @media (max-width: 600px) {
+      .drawer-modal {
+        max-height: 88vh;
+        border-radius: 20px 20px 0 0;
+      }
+      .drawer-head {
+        padding: 12px 14px;
+      }
+      .drawer-content {
+        padding: 12px 14px 20px;
+      }
+      .drawer-foot {
+        padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px));
+      }
+      .dish-card {
+        padding: 10px;
+        gap: 10px;
+      }
+      .dish-thumb, .thumb-fallback {
+        width: 76px;
+        height: 76px;
+      }
+      .portion-btn {
+        padding: 4px 7px;
+        font-size: 0.68rem;
+        min-height: 28px;
+      }
+      .stepper-mini button {
+        width: 28px;
+        height: 28px;
+        font-size: 1rem;
+      }
+      .value-savings-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px;
+      }
+      .value-savings-btn {
+        width: 100%;
+        text-align: center;
+        margin-top: 4px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1557,6 +1768,17 @@
             <button type="button" class="chip-micro" data-note="🌾 Pakka Jain Prep (Bina Pyaz/Lehsun)">+ 🌾 Jain Prep</button>
             <button type="button" class="chip-micro" data-note="🌶️ Thoda Extra Teekha">+ 🌶️ Extra Teekha</button>
             <button type="button" class="chip-micro" data-note="🧊 Kam Meetha / Kam Barf">+ 🧊 Kam Meetha</button>
+          </div>
+        </div>
+
+        <!-- Smart Meal Suggestion at Placing Time -->
+        <div class="suggest-meal-box" id="suggestMealBox">
+          <div class="suggest-head">
+            <span class="suggest-badge">✨ COMPLETE YOUR MEAL • POPULAR PAIRINGS</span>
+            <span class="suggest-title">Khaane ke sath kuch thanda ya meetha add karein:</span>
+          </div>
+          <div class="suggest-items-row" id="suggestMealRow">
+            <!-- Rendered by JS -->
           </div>
         </div>
 
@@ -1828,21 +2050,21 @@
       { id: "c3", name: "Hakka Paneer Noodles", category: "Chowmein & Noodles", description: "Spiced paneer cubes, capsicum, Hakka wok noodles", price: 120, hasHalf: false, halfPrice: null, hasOnion: true, isVeg: true, jainFriendly: false, bestseller: false, image: "images/chinese.png", available: true },
       { id: "c4", name: "Chilli Garlic Noodles", category: "Chowmein & Noodles", description: "Roasted garlic, red chilli wok paste, shredded veggies", price: 140, hasHalf: false, halfPrice: null, hasOnion: true, isVeg: true, jainFriendly: false, bestseller: false, image: "images/chinese.png", available: true },
       { id: "c5", name: "Jain Veg Chowmein (Bina Pyaaz)", category: "Chowmein & Noodles", description: "Shredded cabbage, green peas, capsicum, mild soy (No Onion/Garlic)", price: 90, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: false, image: "images/chinese.png", available: true },
-      { id: "cb1", name: "Burger + Masala Fries + Drink Combo", category: "Value Combos", description: "Mix veg burger, peri-peri masala fries, chilled soft drink", price: 169, hasHalf: false, halfPrice: null, hasOnion: true, isVeg: true, jainFriendly: false, bestseller: true, image: "images/burger.png", available: true },
-      { id: "cb2", name: "Chowmein + Fried Momos Combo", category: "Value Combos", description: "Veg Hakka chowmein, 5 crispy fried momos, spicy dip", price: 159, hasHalf: false, halfPrice: null, hasOnion: true, isVeg: true, jainFriendly: false, bestseller: true, image: "images/chinese.png", available: true },
-      { id: "cb3", name: "Pizza + Stuffed Garlic Bread + Drink Combo", category: "Value Combos", description: "Regular Margherita pizza, cheese stuffed bread, chilled drink (Bina Pyaaz / Jain)", price: 289, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: true, image: "images/pizza.png", available: true },
-      { id: "cb4", name: "Paneer Kathi Roll + Cold Coffee Combo", category: "Value Combos", description: "Grilled tandoori paneer kathi roll, thick iced cold coffee", price: 199, hasHalf: false, halfPrice: null, hasOnion: true, isVeg: true, jainFriendly: false, bestseller: true, image: "images/healthy.png", available: true },
-      { id: "s1", name: "Cheese Garlic Bread", category: "Bakery & Sides", description: "Roasted garlic butter, mozzarella, toasted bread", price: 140, hasHalf: true, halfPrice: 85, hasOnion: false, isVeg: true, jainFriendly: false, bestseller: true, image: "images/healthy.png", available: true },
+      { id: "cb1", name: "Burger + Masala Fries + Drink Combo", category: "Value Combos", description: "Mix veg burger, peri-peri masala fries, chilled soft drink", price: 169, originalPrice: 249, savings: 80, hasHalf: false, halfPrice: null, hasOnion: true, isVeg: true, jainFriendly: false, bestseller: true, image: "images/value_combo.svg", available: true },
+      { id: "cb2", name: "Chowmein + Fried Momos Combo", category: "Value Combos", description: "Veg Hakka chowmein, 5 crispy fried momos, spicy dip", price: 159, originalPrice: 239, savings: 80, hasHalf: false, halfPrice: null, hasOnion: true, isVeg: true, jainFriendly: false, bestseller: true, image: "images/value_combo.svg", available: true },
+      { id: "cb3", name: "Pizza + Stuffed Garlic Bread + Drink Combo", category: "Value Combos", description: "Regular Margherita pizza, cheese stuffed bread, chilled drink (Bina Pyaaz / Jain)", price: 289, originalPrice: 389, savings: 100, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: true, image: "images/value_combo.svg", available: true },
+      { id: "cb4", name: "Paneer Kathi Roll + Cold Coffee Combo", category: "Value Combos", description: "Grilled tandoori paneer kathi roll, thick iced cold coffee", price: 199, originalPrice: 269, savings: 70, hasHalf: false, halfPrice: null, hasOnion: true, isVeg: true, jainFriendly: false, bestseller: true, image: "images/value_combo.svg", available: true },
+      { id: "s1", name: "Cheese Garlic Bread", category: "Bakery & Sides", description: "Roasted garlic butter, mozzarella, toasted bread", price: 140, hasHalf: true, halfPrice: 85, hasOnion: false, isVeg: true, jainFriendly: false, bestseller: true, image: "images/garlic_bread.svg", available: true },
       { id: "d1", name: "Choco Lava Cake", category: "Desserts", description: "Dark chocolate, cocoa sponge, molten core", price: 90, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: true, image: "images/desserts.png", available: true },
-      { id: "bv1", name: "Cold Coffee", category: "Beverages & Shakes", description: "Espresso shot, chilled dairy, dark chocolate", price: 119, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: true, image: "images/healthy.png", available: true },
-      { id: "bv2", name: "Kitkat Shake", category: "Beverages & Shakes", description: "Kitkat wafer, vanilla cream, milk", price: 119, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: true, image: "images/healthy.png", available: true },
-      { id: "bv3", name: "Chocolate Shake", category: "Beverages & Shakes", description: "Dark cocoa, chocolate fudge, milk", price: 99, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: false, image: "images/healthy.png", available: true },
-      { id: "bv4", name: "Vanilla Shake", category: "Beverages & Shakes", description: "Vanilla bean, thick cream, milk", price: 99, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: false, image: "images/healthy.png", available: true },
-      { id: "bv5", name: "Butterscotch Shake", category: "Beverages & Shakes", description: "Butterscotch crunch, praline nuggets, milk", price: 99, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: false, image: "images/healthy.png", available: true },
-      { id: "bv6", name: "Strawberry Shake", category: "Beverages & Shakes", description: "Strawberry purée, ice cream, milk", price: 99, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: false, image: "images/healthy.png", available: true },
-      { id: "bv7", name: "Green Mint Mojito", category: "Beverages & Shakes", description: "Fresh mint, tart lemon, raw cane sugar, soda", price: 99, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: false, image: "images/healthy.png", available: true },
-      { id: "bv8", name: "Blue Curacao Mojito", category: "Beverages & Shakes", description: "Blue curaçao, mint sprigs, lime, soda", price: 99, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: false, image: "images/healthy.png", available: true },
-      { id: "bv9", name: "Fresh Lime Soda", category: "Beverages & Shakes", description: "Lemon juice, rock salt, mint, soda", price: 99, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: false, image: "images/healthy.png", available: true }
+      { id: "bv1", name: "Cold Coffee", category: "Beverages & Shakes", description: "Espresso shot, chilled dairy, dark chocolate", price: 119, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: true, image: "images/shake_coffee.svg", available: true },
+      { id: "bv2", name: "Kitkat Shake", category: "Beverages & Shakes", description: "Kitkat wafer, vanilla cream, milk", price: 119, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: true, image: "images/shake_coffee.svg", available: true },
+      { id: "bv3", name: "Chocolate Shake", category: "Beverages & Shakes", description: "Dark cocoa, chocolate fudge, milk", price: 99, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: false, image: "images/shake_coffee.svg", available: true },
+      { id: "bv4", name: "Vanilla Shake", category: "Beverages & Shakes", description: "Vanilla bean, thick cream, milk", price: 99, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: false, image: "images/shake_coffee.svg", available: true },
+      { id: "bv5", name: "Butterscotch Shake", category: "Beverages & Shakes", description: "Butterscotch crunch, praline nuggets, milk", price: 99, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: false, image: "images/shake_coffee.svg", available: true },
+      { id: "bv6", name: "Strawberry Shake", category: "Beverages & Shakes", description: "Strawberry purée, ice cream, milk", price: 99, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: false, image: "images/shake_coffee.svg", available: true },
+      { id: "bv7", name: "Green Mint Mojito", category: "Beverages & Shakes", description: "Fresh mint, tart lemon, raw cane sugar, soda", price: 99, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: false, image: "images/mojito_soda.svg", available: true },
+      { id: "bv8", name: "Blue Curacao Mojito", category: "Beverages & Shakes", description: "Blue curaçao, mint sprigs, lime, soda", price: 99, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: false, image: "images/mojito_soda.svg", available: true },
+      { id: "bv9", name: "Fresh Lime Soda", category: "Beverages & Shakes", description: "Lemon juice, rock salt, mint, soda", price: 99, hasHalf: false, halfPrice: null, hasOnion: false, isVeg: true, jainFriendly: true, bestseller: false, image: "images/mojito_soda.svg", available: true }
     ];
 
     // State
@@ -2123,6 +2345,35 @@
       menuContainer.innerHTML = '';
       const grouped = groupByCategory(filtered);
 
+      // Add Bumper Savings Value Meal Spotlight Banner above Deoband Favorites
+      if (activeCategory === 'All' && !searchQuery.trim() && dietFilter === 'all') {
+        const valueBanner = document.createElement('div');
+        valueBanner.className = 'value-savings-banner';
+        valueBanner.innerHTML = `
+          <div class="value-savings-content">
+            <span class="value-savings-badge">💰 VALUE MEAL SAVINGS • UP TO ₹100 OFF!</span>
+            <h3 class="value-savings-title">Combo Meals Pe Bumper Bachat Payein! 🏷️</h3>
+            <p class="value-savings-desc">Pizza + Stuffed Garlic Bread + Cold Drink Combo sirf ₹289 mein (Alag se ₹389 — <strong>₹100 Bachat!</strong>)</p>
+          </div>
+          <button type="button" class="value-savings-btn" id="btnExploreCombos">
+            🎁 Value Combos Dekhein
+          </button>
+        `;
+        menuContainer.appendChild(valueBanner);
+        setTimeout(() => {
+          const btnCombos = document.getElementById('btnExploreCombos');
+          if (btnCombos) {
+            btnCombos.addEventListener('click', () => {
+              activeCategory = 'Value Combos';
+              renderCategoryPills();
+              renderMenu();
+              const sec = document.getElementById('cat-valuecombos') || document.getElementById('menuContainer');
+              if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+            });
+          }
+        }, 50);
+      }
+
       for (const [category, items] of Object.entries(grouped)) {
         const section = document.createElement('section');
         const theme = SECTION_THEMES[category] || { icon: '🍽️', color: 'var(--accent-amber)', border: 'var(--accent-amber)', bg: 'var(--accent-surface)', text: 'var(--text)', tag: 'Special' };
@@ -2236,6 +2487,20 @@
       const pInfo = getItemPortionInfo(item, activePortion);
       const currentPrice = pInfo.price;
 
+      // Price and Savings Display for Value Meals
+      let priceDisplayHtml = '';
+      if (item.originalPrice && item.savings) {
+        priceDisplayHtml = `
+          <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: 3px;">
+            <span class="orig-price">${formatINR(item.originalPrice)}</span>
+            <span class="dish-price">${formatINR(currentPrice)}</span>
+            <span class="badge-saving">Bachat ₹${item.savings}</span>
+          </div>
+        `;
+      } else {
+        priceDisplayHtml = portionHtml ? portionHtml : `<span class="dish-price">${formatINR(currentPrice)}</span>`;
+      }
+
       let descHtml = '';
       if (item.description) {
         descHtml = `<p class="dish-desc"><span class="ing-tag">Ingredients:</span> ${item.description}`;
@@ -2253,7 +2518,7 @@
             ${badgesHtml}
           </div>
           <h4 class="dish-title">${item.name}</h4>
-          ${portionHtml ? portionHtml : `<span class="dish-price">${formatINR(currentPrice)}</span>`}
+          ${priceDisplayHtml}
           ${descHtml}
         </div>
         <div class="dish-action-wrap">
@@ -2430,6 +2695,50 @@
 
         drawerItemsList.appendChild(row);
       });
+
+      renderMealSuggestions();
+    }
+
+    function renderMealSuggestions() {
+      const row = document.getElementById('suggestMealRow');
+      if (!row) return;
+      row.innerHTML = '';
+
+      const pairings = [
+        { id: 'bv1', name: 'Cold Coffee', price: 119, image: 'images/shake_coffee.svg', portion: 'full' },
+        { id: 's1', name: 'Garlic Bread', price: 85, image: 'images/garlic_bread.svg', portion: 'half' },
+        { id: 'd1', name: 'Choco Lava Cake', price: 90, image: 'images/desserts.png', portion: 'full' },
+        { id: 'bv7', name: 'Mint Mojito', price: 99, image: 'images/mojito_soda.svg', portion: 'full' }
+      ];
+
+      pairings.forEach(p => {
+        const cartKey = `${p.id}:${p.portion}`;
+        const inCart = cart.get(cartKey) || 0;
+
+        const card = document.createElement('div');
+        card.className = 'suggest-card';
+        card.innerHTML = `
+          <img src="${p.image}" alt="${p.name}" style="width:36px; height:36px; border-radius:6px; object-fit:cover; flex-shrink:0;">
+          <div class="suggest-card-info">
+            <span class="suggest-card-name">${p.name}</span>
+            <span class="suggest-card-price">${formatINR(p.price)}</span>
+          </div>
+          <button type="button" class="suggest-card-btn" data-key="${cartKey}">
+            ${inCart > 0 ? `✓ Added (${inCart})` : `+ Add`}
+          </button>
+        `;
+
+        card.querySelector('.suggest-card-btn').addEventListener('click', (e) => {
+          e.stopPropagation();
+          const cur = cart.get(cartKey) || 0;
+          cart.set(cartKey, cur + 1);
+          updateCartState();
+          renderMenu();
+          showToast(`${p.name} meal mein add ho gaya! 🍔`, '✨');
+        });
+
+        row.appendChild(card);
+      });
     }
 
     function openModal() {
@@ -2440,6 +2749,7 @@
       modalBackdrop.classList.add('open');
       document.body.style.overflow = 'hidden';
       renderDrawerRows();
+      renderMealSuggestions();
     }
 
     function closeModal() {
@@ -2587,8 +2897,20 @@
       const deliveryFee = (deliveryMode === 'delivery' && subtotal < 249 && subtotal > 0) ? 30 : 0;
       const grandTotal = subtotal + deliveryFee;
 
+      let totalBachat = 0;
+      cart.forEach((qty, cartKey) => {
+        const [itemId] = cartKey.split(':');
+        const item = menuItems.find(i => i.id === itemId);
+        if (item && item.savings) {
+          totalBachat += (item.savings * qty);
+        }
+      });
+
       lines.push("━━━━━━━━━━━━━━━━━━━━");
       lines.push(`💰 *Subtotal:* ${formatINR(subtotal)}`);
+      if (totalBachat > 0) {
+        lines.push(`🏷️ *Bumper Bachat:* ${formatINR(totalBachat)} SAVED! 🎉`);
+      }
       if (deliveryMode === 'delivery') {
         lines.push(`🛵 *Delivery:* ${deliveryFee === 0 ? 'FREE' : formatINR(deliveryFee)}`);
       }

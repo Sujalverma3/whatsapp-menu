@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="shakeBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#451A03" />
+      <stop offset="100%" stop-color="#1E120A" />
+    </linearGradient>
+    <linearGradient id="coffeeLiquid" x1="0%" y1="0%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#A16207" />
+      <stop offset="50%" stop-color="#78350F" />
+      <stop offset="100%" stop-color="#451A03" />
+    </linearGradient>
+    <linearGradient id="creamGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#FEF3C7" />
+    </linearGradient>
+    <linearGradient id="glassShine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.5"/>
+      <stop offset="30%" stop-color="#FFFFFF" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="shakeShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#shakeBg)"/>
+  <circle cx="200" cy="200" r="140" fill="#D97706" opacity="0.15" filter="blur(25px)"/>
+
+  <!-- Coffee Glass Container -->
+  <g transform="translate(100, 45)" filter="url(#shakeShadow)">
+    <!-- Tall Glass Body -->
+    <path d="M40 90 L55 280 Q58 300 85 300 L115 300 Q142 300 145 280 L160 90 Z" fill="url(#coffeeLiquid)" />
+
+    <!-- Froth & Swirls inside -->
+    <ellipse cx="100" cy="180" rx="45" ry="12" fill="#B45309" opacity="0.4" />
+    <ellipse cx="100" cy="230" rx="35" ry="10" fill="#92400E" opacity="0.5" />
+
+    <!-- Glass Overlay / Highlights -->
+    <path d="M40 90 L55 280 Q58 300 85 300 L115 300 Q142 300 145 280 L160 90 Z" fill="url(#glassShine)" />
+    <!-- Glass Rim -->
+    <ellipse cx="100" cy="90" rx="60" ry="14" fill="#E2E8F0" opacity="0.6" stroke="#FFFFFF" stroke-width="2"/>
+
+    <!-- Whipped Cream Mountain -->
+    <path d="M55 90 Q65 40 100 35 Q135 40 145 90 Q120 75 100 75 Q80 75 55 90 Z" fill="url(#creamGrad)" />
+    <path d="M70 70 Q100 20 120 45 Q100 40 85 60 Z" fill="#FFFFFF" />
+
+    <!-- Chocolate Drizzle Lines on Cream -->
+    <path d="M68 80 Q90 60 125 78" stroke="#451A03" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+    <path d="M78 60 Q105 45 120 62" stroke="#451A03" stroke-width="4" fill="none" stroke-linecap="round"/>
+    
+    <!-- Red Cherry on Top -->
+    <circle cx="105" cy="30" r="13" fill="#DC2626" />
+    <circle cx="108" cy="26" r="3" fill="#FFFFFF" opacity="0.8" />
+    <path d="M106 18 Q120 2 135 6" stroke="#15803D" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+    <!-- Striped Straw -->
+    <line x1="130" y1="70" x2="165" y2="-20" stroke="#EF4444" stroke-width="8" stroke-linecap="round"/>
+    <line x1="130" y1="70" x2="165" y2="-20" stroke="#FFFFFF" stroke-width="8" stroke-dasharray="8,8" stroke-linecap="round"/>
+
+    <!-- Chocolate Wafer Stick -->
+    <line x1="70" y1="70" x2="45" y2="-10" stroke="#78350F" stroke-width="10" stroke-linecap="round"/>
+    <line x1="70" y1="70" x2="45" y2="-10" stroke="#D97706" stroke-width="2" stroke-dasharray="4,8" stroke-linecap="round"/>
+  </g>
+
+  <!-- Tag Pill -->
+  <g transform="translate(100, 345)">
+    <rect x="0" y="0" width="200" height="34" rx="17" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5"/>
+    <text x="100" y="22" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="900" font-size="13" fill="#92400E" text-anchor="middle" letter-spacing="0.5">
+      🥤 CHILLED SHAKE & COFFEE
+    </text>
+  </g>
+</svg>
